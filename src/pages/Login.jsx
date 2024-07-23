@@ -1,5 +1,14 @@
+import Logo from "../components/Logo.jsx";
+import LoginForm from "../components/LoginForm.jsx";
+
 export default function Login(){
     return(
-        <h1>Login Page</h1>
+        <div className="loginPage">
+            <Logo 
+                large={true}
+                width={"180"}
+            />
+            <LoginForm />
+        </div>
     )
 }

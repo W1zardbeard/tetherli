@@ -1,0 +1,19 @@
+.loginForm{
+    background-color: $white;
+    width:476px;
+    border-radius: $s2;
+    padding:$s5;
+    display:flex;
+    flex-direction: column;
+    gap:$s5;
+
+    .titleAndDesc{
+        display:flex;
+        flex-direction: column;
+        gap:$s1;
+
+        p{
+            color:$grey;
+        }
+    }
+}

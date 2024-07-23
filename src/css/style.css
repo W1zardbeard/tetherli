@@ -114,4 +114,97 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+.loginForm {
+  background-color: #ffffff;
+  width: 476px;
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.loginForm .titleAndDesc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.loginForm .titleAndDesc p {
+  color: #737373;
+}
+
+.logo {
+  align-self: center;
+}
+
+label {
+  font-family: "Instrument Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0;
+  font-size: 0.75rem;
+  line-height: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color: #333333;
+}
+
+.errorMessage {
+  font-family: "Instrument Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  letter-spacing: 0;
+  font-size: 0.75rem;
+  line-height: 18px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  color: #FF3939;
+  visibility: hidden;
+}
+
+.formField {
+  color: #333333;
+  font-family: "Instrument Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0;
+  font-size: 1rem;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  padding-left: 32px;
+  padding-right: 16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 100%;
+  border: #d9d9d9 solid 1px;
+  border-radius: 8px;
+}
+.formField:focus {
+  border: #633CFF 1px solid;
+  outline: none;
+  box-shadow: 0px 0px 32px 0px rgba(99, 60, 255, 0.25);
+}
+.formField:invalid {
+  border: #FF3939 1px solid;
+}
+
+body, .root {
+  background-color: #fafafa;
+}
+
+.loginPage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
 }/*# sourceMappingURL=style.css.map */
