@@ -1,0 +1,25 @@
+button{
+    width:100%;
+    padding-top:$s12;
+    padding-bottom:$s12;
+    border:none;
+    border-radius:$r1;
+    @include font(1rem, 700, 0, 24px);
+
+    &:hover{
+        cursor: pointer;
+    }
+
+  
+}
+
+
+.btnPrimary{
+    background-color: $purplePrimary;
+    color:$white;
+
+    &:hover{
+        background-color:$purpleHover;
+        @include activeSelection();
+    }
+}
