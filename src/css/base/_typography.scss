@@ -17,5 +17,7 @@ p{
 
 a{
     @include font(1rem, 400, 0, 24px);
+    color:$purplePrimary;
+    text-decoration: none;
 }
 

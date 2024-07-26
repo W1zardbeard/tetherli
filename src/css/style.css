@@ -114,6 +114,8 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  color: #633CFF;
+  text-decoration: none;
 }
 
 .loginForm {
@@ -132,6 +134,15 @@ a {
 }
 .loginForm .titleAndDesc p {
   color: #737373;
+  text-align: left;
+}
+.loginForm form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.loginForm p {
+  text-align: center;
 }
 
 .logo {
@@ -164,7 +175,7 @@ label {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   color: #FF3939;
-  visibility: hidden;
+  visibility: visible;
 }
 
 .formField {

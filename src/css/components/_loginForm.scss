@@ -14,6 +14,16 @@
 
         p{
             color:$grey;
+            text-align: left;
         }
+    }
+
+    form{
+        display:flex;
+        flex-direction: column;
+        gap:$s3;
+    }
+    p{
+        text-align: center;
     }
 }

@@ -9,7 +9,7 @@ export default function FormField(props){
         return(
            
             <div>            
-                <label for="email">Email</label><br/>
+                <label for="email">{props.label}</label><br/>
                 <input
                     invalid
                     className="formField"
@@ -27,7 +27,7 @@ export default function FormField(props){
     } else if (props.type === "password"){
         return(
             <div>            
-            <label for="password">Password</label><br/>
+            <label for="password">{props.label}</label><br/>
             <input
                 invalid
                 className="formField"

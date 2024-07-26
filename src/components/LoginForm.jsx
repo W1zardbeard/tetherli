@@ -10,9 +10,11 @@ export default function LoginForm(){
         <form action="/api/login" method="POST">
             <FormField 
                 type="email"
+                label="Email address"
             />
             <FormField 
                 type="password"
+                label="Password"
             />
             <button className="btnPrimary" type="submit">Login</button>
         </form>
