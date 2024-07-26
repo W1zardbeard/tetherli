@@ -4,6 +4,7 @@ import TitleDesc from "./loginForm/TitleDesc";
 export default function LoginForm(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     const [disabledBtn, setDisabledBtn] = useState(true);
 
@@ -15,13 +16,28 @@ export default function LoginForm(){
                 setEmail(value);
                 break;
             case "password":
+                    if(value === confirmPassword){
+                        console.log("Same wooo");
+                        
+                    } else{
+                        console.log("Not same");
+                    }
                 setPassword(value);
+                break;
+            case "confirmPassword":
+                    if(password === value){
+                        console.log("Same wooo");
+                        
+                    } else{
+                        console.log("Not same");
+                    }
+                setConfirmPassword(value);
                 break;
         }
     }
 
     function alerter(){
-        alert(email + password);
+        alert("Email: " + email + " Password: " + password + " ConfirmPassword: " + confirmPassword);
       
     }
 
@@ -29,7 +45,6 @@ export default function LoginForm(){
 
     return(
         <div className="loginForm">
-            {/* <!--Make this components --> */}
             <TitleDesc 
                 title="Create account"
                 subText="Let’s get you started sharing your links!"
@@ -40,7 +55,7 @@ export default function LoginForm(){
 
             {/*Email field */}
             <div>            
-                <label for="email">Email address</label><br/>
+                <label htmlFor="email">Email address</label><br/>
                 <input
                     onChange={handleChange}
                     className="formField"
@@ -48,13 +63,14 @@ export default function LoginForm(){
                     name="email" 
                     type="email" 
                     placeholder="eg. simon@email.com"
+                    value={email}
                 />
                
             </div>
 
             {/*Password Field */}    
             <div>            
-                <label for="password">Create password</label><br/>
+                <label htmlFor="password">Create password</label><br/>
                     <input
                         onChange={handleChange}
                         className="formField"
@@ -62,6 +78,22 @@ export default function LoginForm(){
                         name="password" 
                         type="password" 
                         placeholder="Enter your password" 
+                        value={password}
+                    />
+                   
+            </div>
+
+            {/*Confirm password Field */}    
+            <div>            
+                <label htmlFor="password">Confirm password</label><br/>
+                    <input
+                        onChange={handleChange}
+                        className="formField"
+                        style={{backgroundImage: "url('src/assets/icon-password.svg')", backgroundRepeat: "no-repeat", backgroundPosition: "10px 16px" }}
+                        name="confirmPassword" 
+                        type="password" 
+                        placeholder="Enter your password" 
+                        value={confirmPassword}
                     />
                    
             </div>

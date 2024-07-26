@@ -12,7 +12,7 @@ export default function LoginForm(){
 
             {/*Email field */}
             <div>            
-                <label for="email">Email address</label><br/>
+                <label htmlFor="email">Email address</label><br/>
                 <input
                     
                     className="formField"
@@ -26,7 +26,7 @@ export default function LoginForm(){
          
             {/*Password Field */}    
             <div>            
-                <label for="password">Create password</label><br/>
+                <label htmlFor="password">Create password</label><br/>
                     <input
                         
                         className="formField"
