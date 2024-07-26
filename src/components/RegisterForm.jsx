@@ -6,41 +6,122 @@ export default function LoginForm(){
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
+
+
+//Toggles 
+
+    const [validEmail, setValidEmail] = useState(false);
+
+    //Toggle for the match password visability
+    const [matchPassword, setMatchPassword] = useState(false); 
+    
+    //For disabled button on and off
     const [disabledBtn, setDisabledBtn] = useState(true);
 
+    //For that password match on load fix
+    const [confPassBool, setConfPassBool] = useState(false);
+
+  
+    //Function so i can run 2 functions from the confirm password onchange event
+    function confPassFirstTimeClick(event){
+        handleChange(event);
+
+        confPassBoolFunc();
+    }
+
+/*function to make sure that the password match doesnt show on page load. After confirm password 
+field has changed, then it can show */
+    function confPassBoolFunc(){
+        if(confPassBool === false){
+            setConfPassBool(true);
+        }
+    }
+
+    function validateEmail(emailField){
+        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+
+        if (reg.test(emailField.value) == false) 
+            {
+                console.log('Invalid Email Address');
+                setValidEmail(false);
+                return false;
+            }
+            console.log('Valid Email Address');
+            setValidEmail(true);
+            return true;
+    }
+
+
+
+/*Handle change function */
     function handleChange(event){
         const {name, value} = event.target;
         
         switch(name){
+
+            //check if field is email
             case "email":
                 setEmail(value);
+               
                 break;
+            
+            //check if field is password
             case "password":
+                    //if inputted value = the confirm password
                     if(value === confirmPassword){
-                        console.log("Same wooo");
-                        
+                        //enable CTA
+                        setDisabledBtn(false);  
+                        //Turn off message
+                        if(confPassBool === true){
+                            setMatchPassword(false); 
+                        }
+
+                    //if passwords dont match    
                     } else{
                         console.log("Not same");
+                        //disable button
+                        setDisabledBtn(true);
+                        //turn on message
+                        if(confPassBool === true){
+                            setMatchPassword(true); 
+                        }
+                        
                     }
                 setPassword(value);
                 break;
+
+            //check if field is confirm password
             case "confirmPassword":
+                    //if inputted value = the  password
                     if(password === value){
-                        console.log("Same wooo");
-                        
+                        //enable CTA
+                        setDisabledBtn(false);
+                        //turn off message
+                        setMatchPassword(false); 
+                    //if passwords dont match
                     } else{
                         console.log("Not same");
+                        //Disable button
+                        setDisabledBtn(true);  
+                        //Show message
+                        setMatchPassword(true); 
                     }
                 setConfirmPassword(value);
                 break;
         }
+
+        if(matchPassword === true && validEmail === true){
+            setDisabledBtn(false);
+        }else{
+            setDisabledBtn(true);
+        }
+        return;
     }
 
-    function alerter(){
-        alert("Email: " + email + " Password: " + password + " ConfirmPassword: " + confirmPassword);
-      
-    }
 
+
+
+//===========================================================================================
 
 
     return(
@@ -57,6 +138,7 @@ export default function LoginForm(){
             <div>            
                 <label htmlFor="email">Email address</label><br/>
                 <input
+                    onblur={validateEmail(this)}
                     onChange={handleChange}
                     className="formField"
                     style={{backgroundImage: "url('src/assets/icon-email.svg')", backgroundRepeat: "no-repeat", backgroundPosition: "10px 16px" }}
@@ -72,6 +154,7 @@ export default function LoginForm(){
             <div>            
                 <label htmlFor="password">Create password</label><br/>
                     <input
+                        
                         onChange={handleChange}
                         className="formField"
                         style={{backgroundImage: "url('src/assets/icon-password.svg')", backgroundRepeat: "no-repeat", backgroundPosition: "10px 16px" }}
@@ -85,9 +168,10 @@ export default function LoginForm(){
 
             {/*Confirm password Field */}    
             <div>            
-                <label htmlFor="password">Confirm password</label><br/>
+                <label htmlFor="confirmPassword">Confirm password</label><br/>
                     <input
-                        onChange={handleChange}
+                        
+                        onChange={confPassFirstTimeClick}
                         className="formField"
                         style={{backgroundImage: "url('src/assets/icon-password.svg')", backgroundRepeat: "no-repeat", backgroundPosition: "10px 16px" }}
                         name="confirmPassword" 
@@ -95,14 +179,13 @@ export default function LoginForm(){
                         placeholder="Enter your password" 
                         value={confirmPassword}
                     />
-                   
+                     <span className="errorMessage"  style={{visibility:matchPassword && 'visible'}}>Passwords do not match</span>
             </div>
 
             {/*Submit button */}
-            <button disabled={disabledBtn && true} className="btnPrimary" type="submit" onClick={alerter}>Create new account</button>
+            <button disabled={disabledBtn && true} className="btnPrimary" type="submit" >Create new account</button>
 
         </form>
-        <button className="btnPrimary"  onClick={alerter}>Alert me</button>
 
         <p>Already have an account? <a href="/">Login</a></p>
            

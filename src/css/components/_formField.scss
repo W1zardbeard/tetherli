@@ -6,7 +6,7 @@ label{
 .errorMessage{
     @include font(0.75rem, 500, 0, 18px);
     color:$red;
-    visibility: visible;
+    visibility: hidden;
 }
 
 .formField{

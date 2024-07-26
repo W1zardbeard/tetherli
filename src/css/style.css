@@ -175,7 +175,7 @@ label {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   color: #FF3939;
-  visibility: visible;
+  visibility: hidden;
 }
 
 .formField {
