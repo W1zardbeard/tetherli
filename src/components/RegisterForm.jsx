@@ -37,19 +37,7 @@ field has changed, then it can show */
         }
     }
 
-    function validateEmail(emailField){
-        var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-
-        if (reg.test(emailField.value) == false) 
-            {
-                console.log('Invalid Email Address');
-                setValidEmail(false);
-                return false;
-            }
-            console.log('Valid Email Address');
-            setValidEmail(true);
-            return true;
-    }
+ 
 
 
 
@@ -110,12 +98,7 @@ field has changed, then it can show */
                 break;
         }
 
-        if(matchPassword === true && validEmail === true){
-            setDisabledBtn(false);
-        }else{
-            setDisabledBtn(true);
-        }
-        return;
+        
     }
 
 
@@ -138,7 +121,7 @@ field has changed, then it can show */
             <div>            
                 <label htmlFor="email">Email address</label><br/>
                 <input
-                    onblur={validateEmail(this)}
+                  
                     onChange={handleChange}
                     className="formField"
                     style={{backgroundImage: "url('src/assets/icon-email.svg')", backgroundRepeat: "no-repeat", backgroundPosition: "10px 16px" }}
