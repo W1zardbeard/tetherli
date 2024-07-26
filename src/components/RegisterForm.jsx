@@ -1,21 +1,19 @@
 import { useState } from "react";
+import TitleDesc from "./loginForm/TitleDesc";
 
 export default function LoginForm(){
-    const [details, setDetails] = useState({
-        email: "",
-        password: ""
-    })
-
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
 
 
 
     return(
         <div className="loginForm">
             {/* <!--Make this components --> */}
-            <div className="titleAndDesc">
-                <h1>Create account</h1>
-                <p>Let’s get you started sharing your links!</p>
-            </div>
+            <TitleDesc 
+                title="Create account"
+                subText="Let’s get you started sharing your links!"
+            />
 
         {/*Form */}
         <form action="/api/register" method="POST">
