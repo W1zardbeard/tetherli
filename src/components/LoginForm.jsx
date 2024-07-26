@@ -14,7 +14,7 @@ export default function LoginForm(){
             <div>            
                 <label for="email">Email address</label><br/>
                 <input
-                    invalid
+                    
                     className="formField"
                     style={{backgroundImage: "url('src/assets/icon-email.svg')", backgroundRepeat: "no-repeat", backgroundPosition: "10px 16px" }}
                     name="email" 
@@ -28,7 +28,7 @@ export default function LoginForm(){
             <div>            
                 <label for="password">Create password</label><br/>
                     <input
-                        invalid
+                        
                         className="formField"
                         style={{backgroundImage: "url('src/assets/icon-password.svg')", backgroundRepeat: "no-repeat", backgroundPosition: "10px 16px" }}
                         name="password" 
