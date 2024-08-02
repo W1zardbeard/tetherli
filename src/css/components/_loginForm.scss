@@ -7,6 +7,12 @@
     flex-direction: column;
     gap:$s5;
 
+    @media (max-width: 476px) {
+        width:100%;
+        background-color:$lightGrey;
+        padding:$s3;
+    }
+
     .titleAndDesc{
         display:flex;
         flex-direction: column;

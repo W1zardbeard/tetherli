@@ -127,6 +127,13 @@ a {
   flex-direction: column;
   gap: 40px;
 }
+@media (max-width: 476px) {
+  .loginForm {
+    width: 100%;
+    background-color: #fafafa;
+    padding: 24px;
+  }
+}
 .loginForm .titleAndDesc {
   display: flex;
   flex-direction: column;
@@ -147,6 +154,13 @@ a {
 
 .logo {
   align-self: center;
+}
+@media (max-width: 476px) {
+  .logo {
+    align-self: flex-start;
+    padding-left: 24px;
+    padding-top: 24px;
+  }
 }
 
 label {
@@ -242,6 +256,16 @@ button:disabled {
   box-shadow: 0px 0px 32px 0px rgba(99, 60, 255, 0.25);
 }
 
+.navbar {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding-left: 24px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-right: 16px;
+  display: flex;
+}
+
 body, .root {
   background-color: #fafafa;
 }
@@ -253,4 +277,16 @@ body, .root {
   align-items: center;
   justify-content: center;
   gap: 48px;
+}
+@media (max-width: 476px) {
+  .loginPage {
+    padding-top: 24px;
+    gap: 32px;
+  }
+}
+
+.editor {
+  background-color: #fafafa;
+  height: 100vh;
+  padding: 24px;
 }/*# sourceMappingURL=style.css.map */

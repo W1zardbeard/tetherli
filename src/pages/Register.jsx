@@ -1,5 +1,5 @@
 import Logo from "../components/Logo.jsx";
-import RegisterForm from "../components/RegisterForm.jsx";
+import RegisterForm from "../components/loginForm/RegisterForm.jsx";
 
 export default function Register(){
     return(

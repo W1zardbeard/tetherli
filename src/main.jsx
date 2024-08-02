@@ -9,6 +9,7 @@ import Login from './pages/Login.jsx';
 import Register from "./pages/Register.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import MainTestPage from './pages/MainTestpage.jsx';
+import Editor from './pages/Editor.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,11 @@ const router = createBrowserRouter([
   {
       path: "/mainTestPage",
       element: <MainTestPage />
-  }
+  },
+  {
+    path: "/editor",
+    element: <Editor />
+}
 ]);
 
 

@@ -1,5 +1,5 @@
 import Logo from "../components/Logo.jsx";
-import LoginForm from "../components/LoginForm.jsx";
+import LoginForm from "../components/loginForm/LoginForm.jsx";
 
 export default function Login(){
     return(

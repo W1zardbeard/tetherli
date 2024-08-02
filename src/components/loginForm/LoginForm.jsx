@@ -1,5 +1,5 @@
 
-import TitleDesc from "./loginForm/TitleDesc";
+import TitleDesc from "./TitleDesc";
 import { useState } from "react";
 
 export default function LoginForm(){

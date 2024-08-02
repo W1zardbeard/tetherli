@@ -49,7 +49,7 @@ app.post("/api/login", async (req, res) => {
           }else{
             console.log(result);
             if(result){
-              res.redirect("/mainTestPage");
+              res.redirect("/editor");
             }else{
               res.send("Inccorect password");
             }
@@ -89,7 +89,7 @@ app.post("/api/register", async (req, res) => {
               [email, hash]
             );
             console.log(result);
-            res.redirect("/mainTestPage");
+            res.redirect("/editor");
           }
         })
       }

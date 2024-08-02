@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TitleDesc from "./loginForm/TitleDesc";
+import TitleDesc from "./TitleDesc";
 
 export default function LoginForm(){
     const [email, setEmail] = useState("");

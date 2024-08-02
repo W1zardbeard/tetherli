@@ -12,14 +12,17 @@
 @import "./components/logo";
 @import "./components/formField";
 @import "./components/button";
+@import "./components/navbar";
 
 
 
 
 //Layouts
 @import "./layout/background";
-@import "./layout/centerPage";
+
 //Pages
+@import "./pages/login";
+@import "./pages/editor";
 
 
 //Themes
