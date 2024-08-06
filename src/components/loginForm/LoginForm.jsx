@@ -1,6 +1,7 @@
 
 import TitleDesc from "./TitleDesc";
 import { useState } from "react";
+import CTA from "../CTA"
 
 export default function LoginForm(){
     const [email, setEmail] = useState("");
@@ -19,6 +20,10 @@ export default function LoginForm(){
         }
     }
 
+    function submitForm(){
+
+    }
+
 
     return(
         <div className="loginForm">
@@ -26,7 +31,7 @@ export default function LoginForm(){
                 title="Login"
                 subText="Add your details below to get back into the app"
             />
-        <form action="/api/login" method="POST">
+        <form name="loginForm" action="/api/login" method="POST">
 
             {/*Email field */}
             <div>            
@@ -57,7 +62,13 @@ export default function LoginForm(){
                     />
                    
             </div>
-            <button className="btnPrimary" type="submit">Login</button>
+            <CTA 
+                text={"Login"}
+                style={"primary"}
+                onClick={submitForm}
+                type={"submit"}
+            />
+          
         </form>
             <p>Don’t have an account? <a href="/createAccount">Create account</a></p>
         </div>

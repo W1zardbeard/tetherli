@@ -222,7 +222,6 @@ label {
 }
 
 button {
-  width: 100%;
   padding-top: 12px;
   padding-bottom: 12px;
   border: none;
@@ -237,6 +236,7 @@ button {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  text-align: center;
 }
 button:hover {
   cursor: pointer;
@@ -256,6 +256,15 @@ button:disabled {
   box-shadow: 0px 0px 32px 0px rgba(99, 60, 255, 0.25);
 }
 
+.btnSecondary {
+  background-color: #ffffff;
+  border: 1px #633CFF solid;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
 .navbar {
   background-color: #ffffff;
   border-radius: 12px;
@@ -264,6 +273,29 @@ button:disabled {
   padding-bottom: 16px;
   padding-right: 16px;
   display: flex;
+  justify-content: space-between;
+}
+.navbar .navLinksCont {
+  display: flex;
+  gap: 16px;
+}
+.navbar .navLinksCont .navLink {
+  display: flex;
+  justify-content: center;
+  background-color: #BEADFF;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 24px;
+  padding-right: 24px;
+  border-radius: 8px;
+  gap: 8px;
+}
+.navbar .navLinksCont .navLink h2 {
+  align-self: center;
+  color: #737373;
+}
+.navbar .navLinksCont .navLink img {
+  align-self: center;
 }
 
 body, .root {

@@ -1,10 +1,11 @@
 button{
-    width:100%;
+    
     padding-top:$s12;
     padding-bottom:$s12;
     border:none;
     border-radius:$r1;
     @include font(1rem, 700, 0, 24px);
+    text-align: center;
 
     &:hover{
         cursor: pointer;
@@ -28,4 +29,13 @@ button{
         background-color:$purpleHover;
         @include activeSelection();
     }
+}
+
+.btnSecondary{
+    background-color:$white;
+    border:1px $purplePrimary solid;
+}
+
+.fullWidth{
+    width:100%;
 }

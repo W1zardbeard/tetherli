@@ -4,7 +4,9 @@ export default function NavLink(props){
         props.active ? 
         <div className="navLink">
             <img 
-                src="src/assets/icon-link.svg" />
+                src="src/assets/icon-link.svg" 
+            />
+            <h2>{props.text}</h2>
         </div>
         : 
         null 

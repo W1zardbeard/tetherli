@@ -1,5 +1,6 @@
 import { useState } from "react";
 import TitleDesc from "./TitleDesc";
+import CTA from "../CTA";
 
 export default function LoginForm(){
     const [email, setEmail] = useState("");
@@ -166,8 +167,13 @@ field has changed, then it can show */
             </div>
 
             {/*Submit button */}
-            <button disabled={disabledBtn && true} className="btnPrimary" type="submit" >Create new account</button>
-
+            {/* <button disabled={disabledBtn && true} className="btnPrimary" type="submit" >Create new account</button> */}
+            <CTA
+                type={"submit"}
+                style={"primary"}
+                text={"Create new account"}
+                disabled={disabledBtn}
+            />
         </form>
 
         <p>Already have an account? <a href="/">Login</a></p>

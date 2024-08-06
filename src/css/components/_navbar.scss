@@ -7,5 +7,31 @@
     padding-right:$s2;
 
     display:flex;
+    justify-content: space-between;
+    
+    .navLinksCont{
+        display: flex;
+        gap:$s2;
+        .navLink{
+            display:flex;
+            justify-content: center;
+            background-color:$purpleHover;
+            padding-top:$s12;
+            padding-bottom:$s12;
+            padding-left:$s3;
+            padding-right:$s3;
+            border-radius: $r1;
+            gap:$s1;
+            
+            h2{
+                align-self: center;
+                color:$grey;
+            }
+            img{
+                align-self: center;
+            }
+        }
+    }
+
     
 }
