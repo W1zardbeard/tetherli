@@ -13,19 +13,27 @@
         display: flex;
         gap:$s2;
         .navLink{
+            img{
+                svg{
+                    path{
+                        fill: $purplePrimary;
+                    }
+                }
+            }
+            
             display:flex;
             justify-content: center;
-            background-color:$purpleHover;
+            
             padding-top:$s12;
             padding-bottom:$s12;
             padding-left:$s3;
             padding-right:$s3;
             border-radius: $r1;
             gap:$s1;
-            
+            color:$grey;
             h2{
                 align-self: center;
-                color:$grey;
+                
             }
             img{
                 align-self: center;
@@ -34,4 +42,16 @@
     }
 
     
+}
+
+.activeLink{
+    background-color:$purpleHover;
+    
+    h2{
+        color:$purplePrimary;
+    }
+    img{
+        filter: invert(36%) sepia(65%) saturate(7499%) hue-rotate(246deg) brightness(100%) contrast(108%);
+    }
+      
 }

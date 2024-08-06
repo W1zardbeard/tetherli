@@ -2,6 +2,8 @@ button{
     
     padding-top:$s12;
     padding-bottom:$s12;
+    padding-left:$s3;
+    padding-right:$s3;
     border:none;
     border-radius:$r1;
     @include font(1rem, 700, 0, 24px);
@@ -34,6 +36,12 @@ button{
 .btnSecondary{
     background-color:$white;
     border:1px $purplePrimary solid;
+    color:$purplePrimary;
+
+    &:hover{
+        background-color:$lightPurple;
+    }
+
 }
 
 .fullWidth{

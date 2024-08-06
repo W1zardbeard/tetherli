@@ -2,13 +2,18 @@ export default function NavLink(props){
    
     return(
         props.active ? 
-        <div className="navLink">
+        <div className="navLink activeLink">
             <img 
-                src="src/assets/icon-link.svg" 
+                src={props.imgSrc} 
             />
             <h2>{props.text}</h2>
         </div>
         : 
-        null 
+        <div className="navLink">
+            <img 
+                src={props.imgSrc} 
+            />
+            <h2>{props.text}</h2>
+        </div>
     )
 }

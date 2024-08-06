@@ -224,6 +224,8 @@ label {
 button {
   padding-top: 12px;
   padding-bottom: 12px;
+  padding-left: 24px;
+  padding-right: 24px;
   border: none;
   border-radius: 8px;
   font-family: "Instrument Sans", sans-serif;
@@ -259,6 +261,10 @@ button:disabled {
 .btnSecondary {
   background-color: #ffffff;
   border: 1px #633CFF solid;
+  color: #633CFF;
+}
+.btnSecondary:hover {
+  background-color: #EFEBFF;
 }
 
 .fullWidth {
@@ -282,20 +288,32 @@ button:disabled {
 .navbar .navLinksCont .navLink {
   display: flex;
   justify-content: center;
-  background-color: #BEADFF;
   padding-top: 12px;
   padding-bottom: 12px;
   padding-left: 24px;
   padding-right: 24px;
   border-radius: 8px;
   gap: 8px;
+  color: #737373;
+}
+.navbar .navLinksCont .navLink img svg path {
+  fill: #633CFF;
 }
 .navbar .navLinksCont .navLink h2 {
   align-self: center;
-  color: #737373;
 }
 .navbar .navLinksCont .navLink img {
   align-self: center;
+}
+
+.activeLink {
+  background-color: #BEADFF;
+}
+.activeLink h2 {
+  color: #633CFF;
+}
+.activeLink img {
+  filter: invert(36%) sepia(65%) saturate(7499%) hue-rotate(246deg) brightness(100%) contrast(108%);
 }
 
 body, .root {

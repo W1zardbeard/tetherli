@@ -19,14 +19,19 @@ export default function Navbar(){
                 <NavLink 
                     active={true}
                     text={"Links"}
+                    imgSrc={"src/assets/icon-links-header.svg"}
                 />
 
                 <NavLink 
                     active={true}
                     text={"Profile Details"}
+                    imgSrc={"src/assets/icon-profile-details-header.svg"}
                 />
             </div>
-            <button className="btnPrimary" type="submit">Login</button>
+            <CTA
+                text={"Preview"}
+                style={"secondary"}
+            />
         </div>
     )
 }
