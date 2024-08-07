@@ -1,12 +1,12 @@
 import Navbar from "../components/editor/Navbar";
 
-export default function Editor(){
+export default function ProfileDetails(){
     return(
         <div className="editor">
             <Navbar 
-                editor={true}
+                profile={true}
             />
-            <h1>This is the editor</h1>
+            <h1>This is the profile details</h1>
         </div>
         
     )

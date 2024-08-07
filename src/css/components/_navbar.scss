@@ -31,12 +31,22 @@
             border-radius: $r1;
             gap:$s1;
             color:$grey;
+
+            &:hover{
+                cursor: pointer;
+                color:$purplePrimary;
+                img{
+                    filter: invert(36%) sepia(65%) saturate(7499%) hue-rotate(246deg) brightness(100%) contrast(108%);
+                }
+            }
+
             h2{
                 align-self: center;
                 
             }
             img{
                 align-self: center;
+                filter: invert(51%) sepia(1%) saturate(977%) hue-rotate(314deg) brightness(86%) contrast(78%);
             }
         }
     }
@@ -45,13 +55,13 @@
 }
 
 .activeLink{
-    background-color:$purpleHover;
+    background-color:$lightPurple;
     
     h2{
         color:$purplePrimary;
     }
     img{
-        filter: invert(36%) sepia(65%) saturate(7499%) hue-rotate(246deg) brightness(100%) contrast(108%);
+        filter: invert(36%) sepia(65%) saturate(7499%) hue-rotate(246deg) brightness(100%) contrast(108%) !important;
     }
       
 }

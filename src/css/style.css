@@ -299,21 +299,29 @@ button:disabled {
 .navbar .navLinksCont .navLink img svg path {
   fill: #633CFF;
 }
+.navbar .navLinksCont .navLink:hover {
+  cursor: pointer;
+  color: #633CFF;
+}
+.navbar .navLinksCont .navLink:hover img {
+  filter: invert(36%) sepia(65%) saturate(7499%) hue-rotate(246deg) brightness(100%) contrast(108%);
+}
 .navbar .navLinksCont .navLink h2 {
   align-self: center;
 }
 .navbar .navLinksCont .navLink img {
   align-self: center;
+  filter: invert(51%) sepia(1%) saturate(977%) hue-rotate(314deg) brightness(86%) contrast(78%);
 }
 
 .activeLink {
-  background-color: #BEADFF;
+  background-color: #EFEBFF;
 }
 .activeLink h2 {
   color: #633CFF;
 }
 .activeLink img {
-  filter: invert(36%) sepia(65%) saturate(7499%) hue-rotate(246deg) brightness(100%) contrast(108%);
+  filter: invert(36%) sepia(65%) saturate(7499%) hue-rotate(246deg) brightness(100%) contrast(108%) !important;
 }
 
 body, .root {

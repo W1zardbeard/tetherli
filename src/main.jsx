@@ -10,6 +10,7 @@ import Register from "./pages/Register.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import MainTestPage from './pages/MainTestpage.jsx';
 import Editor from './pages/Editor.jsx';
+import ProfileDetails from './pages/ProfileDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
   {
     path: "/editor",
     element: <Editor />
-}
+  },
+  {
+    path: "/profileDetails",
+    element: <ProfileDetails />
+  }
 ]);
 
 
