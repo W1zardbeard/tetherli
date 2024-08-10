@@ -1,4 +1,10 @@
+import {useMediaQuery} from "react-responsive";
+
+
 export default function CTA(props){
+
+    const tablet = useMediaQuery({query: '(max-width:700px)'})
+
     switch (props.style){
         case "primary":
             return(
@@ -17,8 +23,9 @@ export default function CTA(props){
                     className="btnSecondary" 
                     type={props.type}
                     disabled={props.disabled}
-                >
-                    {props.text}
+                >   
+                    {props.icon && <img src="src/assets/icon-preview-header.svg"/> }
+                    {tablet ?  null : props.text}
                 </button>
             );
             break;

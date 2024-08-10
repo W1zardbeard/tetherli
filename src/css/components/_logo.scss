@@ -2,6 +2,13 @@
     align-self: center;
 
     @media (max-width: 476px) {
+        align-self:center;
+       
+    }
+}
+
+.loginLogo{
+    @media (max-width: 476px) {
         align-self:flex-start;
         padding-left:$s3;
         padding-top:$s3;

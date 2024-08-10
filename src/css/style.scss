@@ -12,13 +12,16 @@
 @import "./components/logo";
 @import "./components/formField";
 @import "./components/button";
-@import "./components/navbar";
+@import "./components/navbar"; 
+@import "./components/phonePreview";
+@import "./components/editArea";
 
 
 
 
 //Layouts
 @import "./layout/background";
+@import "./layout/mainAreaWrapper";
 
 //Pages
 @import "./pages/login";

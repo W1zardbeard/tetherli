@@ -1,5 +1,8 @@
 .editor{
+    display:flex;
+    flex-direction:column;
     background-color:$lightGrey;
     height:100vh;
     padding:$s3;
+    gap:$s3;
 }

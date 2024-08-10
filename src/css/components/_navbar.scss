@@ -13,6 +13,18 @@
         display: flex;
         gap:$s2;
         .navLink{
+
+            @media (max-width: 700px) {
+                h2{
+                    display: none;
+                }
+                img{
+                    min-width:20px;
+                }
+            }
+
+           
+
             img{
                 svg{
                     path{

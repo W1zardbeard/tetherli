@@ -30,6 +30,7 @@ export default function Navbar(props){
             <Logo 
                 large={true}
                 width={146}
+                editor={true}
             />
 
             {/* <CTAe 
@@ -58,6 +59,7 @@ export default function Navbar(props){
             <CTA
                 text={"Preview"}
                 style={"secondary"}
+                icon={true}
                 
             />
       

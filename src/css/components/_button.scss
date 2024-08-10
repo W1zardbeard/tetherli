@@ -19,6 +19,20 @@ button{
         opacity: 25%;
     }
 
+
+    img{
+        display:none;
+    }
+
+    @media (max-width: 700px) {
+
+        
+        img{
+           display: block;
+           min-width:20px;
+        }
+    }
+
   
 }
 
