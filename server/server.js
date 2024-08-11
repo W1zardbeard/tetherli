@@ -98,6 +98,9 @@ app.post("/api/register", async (req, res) => {
     }
 })
 
+
+//Mock user data ============================================
+
 var userData = {
   name: "",
   email: "",
@@ -105,18 +108,21 @@ var userData = {
 
   links: [
     {
-      name: "bing"
+      type: "github",
+      link: "https://google.com"
     },
     {
-      name: "bong"
+      type: "twitter",
+      link: "https://google.com"
     },
     {
-      name: "bang"
+      type: "instagram",
+      link: "https://google.com"
     }
   ]
 }
 
-
+//Mock user data api call ============================================
 app.get("/api/mockuserData", (req, res) => {
   res.send(userData);
 })

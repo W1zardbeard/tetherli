@@ -370,6 +370,7 @@ button img {
   padding-left: 35px;
   padding-right: 35px;
   padding-bottom: 53px;
+  gap: 56px;
 }
 
 .editArea {
@@ -403,6 +404,30 @@ button img {
 
 .emptyDetails {
   background-color: #eeeeee;
+  border-radius: 16px;
+}
+
+.emptyName {
+  height: 16px;
+  width: 160px;
+}
+
+.emptyEmail {
+  height: 8px;
+  width: 72px;
+}
+
+.linkCard {
+  height: 44px;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.empty {
+  background-color: #eeeeee;
+}
+
+.emptyDetails {
   border-radius: 16px;
 }
 

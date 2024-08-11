@@ -1,5 +1,25 @@
-export default function LinkListMockup(){
+import LinkCard from "./LinkCard";
+import { useState, useEffect } from "react";
+
+export default function LinkListMockup(props){
+
+    const [linkList, setLinkList] = useState([props.links]);
+
+    // useEffect(() =>{
+    //     setLinkList(props.links);
+    // }, [])
+    // console.log(props.links);
+    console.log(linkList);
     return(
-        <h1>I am a link list</h1>
+
+
+
+    //   linkList.map(function(link){
+    //         <LinkCard />
+    //   })
+        
+      
+    <LinkCard />
+        
     )
 }
