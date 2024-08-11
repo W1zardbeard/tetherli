@@ -1,8 +1,10 @@
-export default function UserProfile(){
+export default function UserProfile(props){
     return(
         <div className="userProfile">
-            <div className="userAvatar">
-
+            {props.userDetails.avatar ? <div className="userAvatar"><img src="https://xsgames.co/randomusers/assets/avatars/male/42.jpg" /></div> :  <div className="userAvatar"></div>}
+            <div className="details">
+                {props.userDetails.name ? <h2>{props.userDetails.name}</h2> :<div className="emptyDetails emptyName"></div>}
+                {props.userDetails.email ? <p className="bodySmall">{props.userDetails.email}</p> :<div className="emptyDetails emptyEmail"></div>}
             </div>
         </div>
     )

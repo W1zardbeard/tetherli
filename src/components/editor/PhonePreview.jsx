@@ -1,11 +1,13 @@
 import UserProfile from "./UserProfile"
 import LinkListMockup from "./LinkListMockup"
 
-export default function PhonePreview(){
+export default function PhonePreview(props){
     return(
         <div className="phonePreviewCont">
             <div className="phoneMockup">
-                <UserProfile />
+                <UserProfile 
+                    userDetails = {props.userDetails}
+                />
                 <LinkListMockup />
             </div>
         </div>

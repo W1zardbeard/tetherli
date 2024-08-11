@@ -1,0 +1,38 @@
+.userProfile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:$s3;
+
+    .userAvatar{
+       width:96px;
+       height:96px;
+       background-color:$emptyGrey;
+       border-radius: $r6;
+       overflow: hidden;
+    }
+
+    .details{
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:$s1;
+    }
+}
+
+.emptyDetails{
+    background-color:$emptyGrey;
+    border-radius:$r3;
+}
+
+.emptyName{
+    height:$s2;
+    width:160px;
+}
+
+.emptyEmail{
+    height:$s1;
+    width:72px;
+}

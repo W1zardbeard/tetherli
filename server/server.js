@@ -98,6 +98,29 @@ app.post("/api/register", async (req, res) => {
     }
 })
 
+var userData = {
+  name: "",
+  email: "",
+  avatar: "bananas",
+
+  links: [
+    {
+      name: "bing"
+    },
+    {
+      name: "bong"
+    },
+    {
+      name: "bang"
+    }
+  ]
+}
+
+
+app.get("/api/mockuserData", (req, res) => {
+  res.send(userData);
+})
+
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

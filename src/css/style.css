@@ -379,6 +379,43 @@ button img {
   padding: 40px;
 }
 
+.userProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.userProfile .userAvatar {
+  width: 96px;
+  height: 96px;
+  background-color: #eeeeee;
+  border-radius: 48px;
+  overflow: hidden;
+}
+.userProfile .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.emptyDetails {
+  background-color: #eeeeee;
+  border-radius: 16px;
+}
+
+.emptyName {
+  height: 16px;
+  width: 160px;
+}
+
+.emptyEmail {
+  height: 8px;
+  width: 72px;
+}
+
 body, .root {
   background-color: #fafafa;
 }
