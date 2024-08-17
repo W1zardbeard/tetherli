@@ -1,25 +1,52 @@
+import EmptyLink from "./EmptyLink";
 import LinkCard from "./LinkCard";
 import { useState, useEffect } from "react";
 
 export default function LinkListMockup(props){
 
-    const [linkList, setLinkList] = useState([props.links]);
+   
+    //const [totalLinks, setTotalLinks]  = useState(5);
+    const [linkList, setLinkList] = useState();
+ 
+
+   
+    useEffect(() =>{
+        setLinkList(props.links);
+    }, [props.links]); 
+
+    var totalLinks = 5 - linkList?.length;
 
     // useEffect(() =>{
-    //     setLinkList(props.links);
-    // }, [])
-    // console.log(props.links);
-    console.log(linkList);
+    //     var newLength = totalLinks - linkList?.length;
+    //     console.log(newLength);
+    //     setTotalLinks(newLength);
+    // },[]);
+
+
+    // useEffect(()=> {
+    //     Array.from({length: totalLinks}, () => <EmptyLink />)
+    // }, [linkList]);
+   
+
+
+    
     return(
 
-
-
-    //   linkList.map(function(link){
-    //         <LinkCard />
-    //   })
-        
+    <div className="linkList">
+      {linkList?.map((link, index) => (
+            <LinkCard
+                key={index}
+                type={link.type}
+                link={link.link}
+            />
+      ))}
+       
+       {Array.from({length: totalLinks}, () => <EmptyLink />)}
+     
+     
+    </div>  
       
-    <LinkCard />
+  
         
     )
 }

@@ -16,14 +16,13 @@ export default function Editor(){
    
     useEffect(() =>{
         axios.get("/api/mockuserData").then((res) => {
-            console.log(res.data);
+            //console.log(res.data);
             setUserData(res.data)
         })
     }, [])
    
 
 
-  
     return(
         <div className="editor">
             <Navbar 

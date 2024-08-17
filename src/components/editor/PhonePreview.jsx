@@ -2,7 +2,6 @@ import UserProfile from "./UserProfile"
 import LinkListMockup from "./LinkListMockup"
 
 export default function PhonePreview(props){
-// console.log(props.userDetails.links);
 
     return(
         <div className="phonePreviewCont">

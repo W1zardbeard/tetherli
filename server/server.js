@@ -102,8 +102,8 @@ app.post("/api/register", async (req, res) => {
 //Mock user data ============================================
 
 var userData = {
-  name: "",
-  email: "",
+  name: "Tom Main",
+  email: "tommain1498@gmail.com",
   avatar: "bananas",
 
   links: [
@@ -117,6 +117,14 @@ var userData = {
     },
     {
       type: "instagram",
+      link: "https://google.com"
+    },
+    {
+      type: "youtube",
+      link: "https://google.com"
+    },
+    {
+      type: "steam",
       link: "https://google.com"
     }
   ]
