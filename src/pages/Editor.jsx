@@ -12,16 +12,21 @@ import axios from "axios";
 export default function Editor(){
 
     const [userData, setUserData] = useState({});
+    const [userLinks, setUserLinks] = useState();
 
    
     useEffect(() =>{
         axios.get("/api/mockuserData").then((res) => {
-            //console.log(res.data);
-            setUserData(res.data)
+            setUserData(res.data);
         })
     }, [])
+
+    useEffect(() => {
+        setUserLinks(userData.links);
+    },[userData])
    
 
+    console.log(userLinks);
 
     return(
         <div className="editor">
@@ -31,8 +36,11 @@ export default function Editor(){
             <div className="mainAreaWrapper">
                 <PhonePreview 
                     userDetails={userData}
+                    links={userLinks}
                 />
-                <EditArea />
+                <EditArea 
+                    links={userLinks}
+                />
             </div>
         </div>
         

@@ -20,12 +20,16 @@ export default function CTA(props){
         case "secondary":
             return(
                 <button 
-                    className="btnSecondary" 
+                    className={props.fullWidth ?  "fullWidth btnSecondary" : "btnSecondary" }
                     type={props.type}
                     disabled={props.disabled}
                 >   
                     {props.icon && <img src="src/assets/icon-preview-header.svg"/> }
-                    {tablet ?  null : props.text}
+                    {props.icon ? 
+                        (tablet ?  null : props.text)
+                        : 
+                        props.text
+                    }
                 </button>
             );
             break;

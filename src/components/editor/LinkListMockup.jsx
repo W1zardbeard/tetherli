@@ -4,31 +4,22 @@ import { useState, useEffect } from "react";
 
 export default function LinkListMockup(props){
 
-   
-    //const [totalLinks, setTotalLinks]  = useState(5);
-    const [linkList, setLinkList] = useState();
- 
+   const linkList = props.links;
+   var totalLinks = 5 - linkList?.length;
 
-   
-    useEffect(() =>{
-        setLinkList(props.links);
-    }, [props.links]); 
 
-    var totalLinks = 5 - linkList?.length;
+   //===============================//
+   //****************************** */
+   // NOT SURE IF WE NEED THE BELOW //
+   //===============================//
+   //****************************** */
 
+    // const [linkList, setLinkList] = useState();
     // useEffect(() =>{
-    //     var newLength = totalLinks - linkList?.length;
-    //     console.log(newLength);
-    //     setTotalLinks(newLength);
-    // },[]);
+    //     setLinkList(props.links);
+    // }, [props.links]); 
 
-
-    // useEffect(()=> {
-    //     Array.from({length: totalLinks}, () => <EmptyLink />)
-    // }, [linkList]);
    
-
-
     
     return(
 

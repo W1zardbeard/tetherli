@@ -3,4 +3,7 @@
     width:100%;
     border-radius: $r2;
     padding:$s5;
+    display:flex;
+    flex-direction: column;
+    gap:$s5;
 }

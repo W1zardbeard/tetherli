@@ -10,7 +10,7 @@ export default function PhonePreview(props){
                     userDetails = {props.userDetails}
                 />
                 <LinkListMockup 
-                    links = {props.userDetails.links}
+                    links = {props.links}
                 />
             </div>
         </div>
