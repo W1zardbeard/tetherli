@@ -22,6 +22,7 @@ export default function EditArea(props){
                 props.links.map((link, index) => (
                     <LinkBuilder 
                         key={index}
+                        numInList={index + 1}
                         type={link.type}
                         url={link.link}
                     /> 

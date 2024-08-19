@@ -489,6 +489,39 @@ button img {
   gap: 16px;
 }
 
+.linkBuilder {
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+  padding: 24px;
+  border-radius: 12px;
+}
+.linkBuilder .linkHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.linkBuilder .linkHeader .remove {
+  color: #737373;
+}
+.linkBuilder .linkHeader .remove:hover {
+  cursor: pointer;
+}
+.linkBuilder .linkHeader .linkTitle {
+  display: flex;
+  gap: 8px;
+}
+.linkBuilder .linkHeader .linkTitle img:hover {
+  cursor: grab;
+}
+.linkBuilder .linkHeader .linkTitle img:active {
+  cursor: grabbing;
+}
+.linkBuilder .linkHeader .linkTitle p {
+  color: #737373;
+  font-weight: 800;
+}
+
 body, .root {
   background-color: #fafafa;
 }

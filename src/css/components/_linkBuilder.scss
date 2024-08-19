@@ -1,0 +1,42 @@
+.linkBuilder{
+    display:flex;
+    flex-direction: column;
+    background-color:$lightGrey;
+    padding:$s3;
+    border-radius: $r2;
+
+    .linkHeader{
+        display:flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .remove{
+            color:$grey;
+
+            &:hover{
+                cursor: pointer;
+            }
+        }
+        
+        .linkTitle{
+            display:flex;
+            gap:$s1;
+
+            img{
+                &:hover{
+                    cursor: grab;
+                }
+
+                &:active{
+                    cursor: grabbing;
+                }
+            }
+            p{
+                color:$grey;
+                font-weight: 800;
+            }
+        }
+    }
+
+    
+}
