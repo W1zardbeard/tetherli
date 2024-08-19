@@ -107,14 +107,14 @@ var userData = {
   avatar: "bananas",
 
   links: [
-    // {
-    //   type: "github",
-    //   link: "https://google.com"
-    // },
-    // {
-    //   type: "twitter",
-    //   link: "https://google.com"
-    // },
+    {
+      type: "github",
+      link: "https://google.com"
+    },
+    {
+      type: "twitter",
+      link: "https://google.com"
+    },
     // {
     //   type: "instagram",
     //   link: "https://google.com"

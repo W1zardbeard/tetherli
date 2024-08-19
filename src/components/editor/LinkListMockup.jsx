@@ -5,8 +5,8 @@ import { useState, useEffect } from "react";
 export default function LinkListMockup(props){
 
    const linkList = props.links;
-   var totalLinks = 5 - linkList?.length;
-
+   var totalLinks = 5 ;
+//    - linkList?.length
 
    //===============================//
    //****************************** */
@@ -31,8 +31,14 @@ export default function LinkListMockup(props){
                 link={link.link}
             />
       ))}
+
+      {props.links?.length > 0 ? 
+        null
+      :
+      Array.from({length: totalLinks}, () => <EmptyLink />)
+      }
        
-       {Array.from({length: totalLinks}, () => <EmptyLink />)}
+       
      
      
     </div>  

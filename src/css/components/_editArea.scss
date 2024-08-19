@@ -7,3 +7,38 @@
     flex-direction: column;
     gap:$s5;
 }
+
+
+.formCont{
+    display:flex;
+    flex-direction: column;
+    gap:$s3;
+}
+
+.emptyEdit{
+    width:100%;
+    background-color:$lightGrey;
+    border-radius:$r2;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-lefT:120px;
+    padding-right:120px;
+    padding-top:$s8;
+    padding-bottom:$s8;
+    gap:$s5;
+
+    div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap:$s3;
+        p{
+            color:$grey;
+            text-align: center;
+        }
+    }
+    
+}

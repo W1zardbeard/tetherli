@@ -1,5 +1,7 @@
 import TitleDesc from "../loginForm/TitleDesc";
 import CTA from "../CTA";
+import EmptyEdit from "./EmptyEdit";
+import LinkBuilder from "./LinkBuilder";
 
 export default function EditArea(props){
     return(
@@ -15,7 +17,17 @@ export default function EditArea(props){
                     icon={false}
                     fullWidth={true}
                 />
-                {props.links?.length > 0 ? <p>links are over 0</p> : <p>links are 0</p>}
+                
+                {props.links?.length > 0 ? 
+                props.links.map((link, index) => (
+                    <LinkBuilder 
+                        key={index}
+                        type={link.type}
+                        url={link.link}
+                    /> 
+                ))
+                : 
+                <EmptyEdit />}
             </div>
        
         </div>

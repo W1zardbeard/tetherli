@@ -383,6 +383,38 @@ button img {
   gap: 40px;
 }
 
+.formCont {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.emptyEdit {
+  width: 100%;
+  background-color: #fafafa;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-lefT: 120px;
+  padding-right: 120px;
+  padding-top: 64px;
+  padding-bottom: 64px;
+  gap: 40px;
+}
+.emptyEdit div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+.emptyEdit div p {
+  color: #737373;
+  text-align: center;
+}
+
 .userProfile {
   display: flex;
   flex-direction: column;
