@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import Dropdown from "./Dropdown";
+
 export default function LinkBuilder(props){
     return(
         <div className="linkBuilder">
@@ -8,6 +11,16 @@ export default function LinkBuilder(props){
                 </div>
                 <p className="remove">Remove</p>
             </div>
+
+
+            <Dropdown 
+                type={props.type}
+            />
+            
+        
+
+
+        
            
             <h1>{props.type}</h1>
             <h2>{props.url}</h2>
