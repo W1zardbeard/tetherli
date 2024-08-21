@@ -3,18 +3,79 @@ import Select from 'react-select';
 
 
 const options = [
-    { value: 'github', label: 'GitHub' },
-    { value: 'twitter', label: 'Twitter' },
-    { value: 'linkedin', label: 'LinkedIn' },
-    { value: 'youtube', label: 'Youtube' },
-    { value: 'facebook', label: 'Facebook' },
-    { value: 'twitch', label: 'Twitch' },
-    { value: 'instagram', label: 'Instagram' },
-    { value: 'steam', label: 'Steam' },
-    { value: 'freecodecamp', label: 'freeCodeCamp' },
-    { value: 'gitlab', label: 'GitLab' },
-    { value: 'hashnode', label: 'Hashnode' },
-    { value: 'stackoverflow', label: 'Stack Overflow' },
+    { value: 'github', label: (
+      <div className='typeName'>
+        <img src="src/assets/icon-github.svg"/>
+          GitHub
+        </div>
+       )
+    },
+    { value: 'twitter', label: (
+      <div className='typeName'>
+        <img src="src/assets/icon-twitter.svg"/>
+          Twitter
+        </div>
+       ) },
+    { value: 'linkedin', label: (
+      <div className='typeName'>
+        <img src="src/assets/icon-linkedin.svg"/>
+          LinkedIn
+        </div>
+       ) },
+    { value: 'youtube', label: (
+      <div className='typeName'>
+        <img src="src/assets/icon-youtube.svg"/>
+          YouTube
+        </div>
+       ) },
+    { value: 'facebook', label: (
+      <div className='typeName'>
+        <img src="src/assets/icon-facebook.svg"/>
+          Facebook
+        </div>
+       ) },
+    { value: 'twitch', label: (
+      <div className='typeName'>
+        <img src="src/assets/icon-twitch.svg"/>
+          Twitch
+        </div>
+       ) },
+    { value: 'instagram', label: (
+      <div className='typeName'>
+        <img src="src/assets/icon-instagram.svg"/>
+          Instagram
+        </div>
+       ) },
+    { value: 'steam', label: (
+      <div className='typeName'>
+        <img src="src/assets/icon-steam.svg"/>
+          Steam
+        </div>
+       ) },
+    { value: 'freecodecamp', label: (
+      <div className='typeName'>
+        <img src="src/assets/icon-freecodecamp.svg"/>
+          FreeCodeCamp
+        </div>
+       ) },
+    { value: 'gitlab', label: (
+      <div className='typeName'>
+        <img src="src/assets/icon-gitlab.svg"/>
+          GitLab
+        </div>
+       ) },
+    { value: 'hashnode', label: (
+      <div className='typeName'>
+        <img src="src/assets/icon-hashnode.svg"/>
+          Hashnode
+        </div>
+       ) },
+    { value: 'stackoverflow', label: (
+      <div className='typeName'>
+        <img src="src/assets/icon-stack-overflow.svg"/>
+          Stack Overflow
+        </div>
+       ) },
   ]
 
 
@@ -28,6 +89,7 @@ const options = [
       paddingLeft: "16px",
       paddingRight: "16px",
       margin: "0px",
+      
     }),
     container:(baseStyles, state) => ({
         ...baseStyles,
@@ -46,8 +108,27 @@ const options = [
         ...baseStyles,
         padding: "0px",
         margin: "0px",
-  
-    })
+      
+    }),
+    valueContainer:(baseStyles, state) => ({
+      ...baseStyles,
+      padding: "0px",
+      margin: "0px"
+    }),
+    option:(baseStyles, state) => ({
+      ...baseStyles,
+     
+      color: state.isSelected ? '#633CFF' : '#333333',
+      fontWeight: state.isSelected ? "800" : "400",
+      backgroundColor: state.isFocused ? "#F0ECFF" : "#FFFFFF",
+      cursor: "pointer",
+      //filter: state.isSelected ? "invert(46%) sepia(23%) saturate(0%) hue-rotate(264deg) brightness(93%) contrast(89%)" : "filter: invert(29%) sepia(91%) saturate(5318%) hue-rotate(248deg) brightness(99%) contrast(102%)",
+      
+    }),
+    // img:(baseStyles, state) => ({
+    //   filter: state.isSelected ? "invert(46%) sepia(23%) saturate(0%) hue-rotate(264deg) brightness(93%) contrast(89%)" : "filter: invert(29%) sepia(91%) saturate(5318%) hue-rotate(248deg) brightness(99%) contrast(102%)",
+    // })
+
   }
 
   
@@ -56,24 +137,27 @@ const options = [
 
 
   export default function Dropdown(props){
-    var indexOfType;
-    useEffect(() => {
-        indexOfType = options.findIndex(x => x.value === props.type);
-        // console.log(indexOfType);
-        // options.findIndex(defaultTypeMatcher);
-      },[props.type]);
+    
+    function findDefaultOption(passedType){ 
+        var indexOfType = options.findIndex(x => x.value === passedType);
+        return indexOfType;
+    }
 
-      console.log(options[indexOfType]);
+    var defaultOption = findDefaultOption(props.type);
+
+    useEffect(() => {
+      defaultOption = findDefaultOption(props.type)
+    },[props.type]);
+
+      
     
 
-      //Try to get this fucking default value to work
-
-    // console.log(props?.type);
+  
     return(
         <div>
             <label>Platform</label>
             <Select 
-               defaultValue={options[indexOfType]}
+               defaultValue={options[defaultOption]}
                 styles={styles}
                 options={options} 
                

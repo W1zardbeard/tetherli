@@ -227,6 +227,14 @@ label {
   border: #FF3939 1px solid;
 }
 
+.typeName {
+  display: flex;
+  gap: 12px;
+}
+.typeName img {
+  filter: invert(46%) sepia(23%) saturate(0%) hue-rotate(264deg) brightness(93%) contrast(89%);
+}
+
 button {
   padding-top: 12px;
   padding-bottom: 12px;

@@ -33,3 +33,12 @@ label{
         border:$red 1px solid;
     }
 }
+
+.typeName{
+    display: flex;
+    gap:$s12;
+
+    img{
+        filter: invert(46%) sepia(23%) saturate(0%) hue-rotate(264deg) brightness(93%) contrast(89%);
+    }
+}

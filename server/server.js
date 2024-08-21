@@ -109,11 +109,11 @@ var userData = {
   links: [
     {
       type: "github",
-      link: "https://google.com"
+      link: "https://gothhub.com"
     },
     {
       type: "twitter",
-      link: "https://google.com"
+      link: "https://twitter.com"
     },
     // {
     //   type: "instagram",
