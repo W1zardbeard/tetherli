@@ -6,6 +6,8 @@
     display:flex;
     flex-direction: column;
     gap:$s5;
+    // height:100%;
+    overflow: auto;
 }
 
 

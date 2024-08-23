@@ -60,6 +60,7 @@ export default function Navbar(props){
                 text={"Preview"}
                 style={"secondary"}
                 icon={true}
+            
                 
             />
       

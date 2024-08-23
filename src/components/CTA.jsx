@@ -23,6 +23,13 @@ export default function CTA(props){
                     className={props.fullWidth ?  "fullWidth btnSecondary" : "btnSecondary" }
                     type={props.type}
                     disabled={props.disabled}
+    
+                    onClick = {() => {
+                        if(props.clickHandler){
+                            props.clickHandler();
+                        }
+                        
+                    }}
                 >   
                     {props.icon && <img src="src/assets/icon-preview-header.svg"/> }
                     {props.icon ? 
@@ -30,6 +37,9 @@ export default function CTA(props){
                         : 
                         props.text
                     }
+                  
+                   
+                  
                 </button>
             );
             break;

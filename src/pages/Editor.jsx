@@ -14,6 +14,13 @@ export default function Editor(){
     const [userData, setUserData] = useState({});
     const [userLinks, setUserLinks] = useState();
 
+    function addNewLink(){
+        //userLinks.push({type: "github", link: "boobs"});
+        // console.log("push");
+        setUserLinks(userLinks => [...userLinks, {type: "github"}])
+        console.log(userLinks);
+    }
+
    
     useEffect(() =>{
         axios.get("/api/mockuserData").then((res) => {
@@ -26,7 +33,7 @@ export default function Editor(){
     },[userData])
    
 
-    console.log(userLinks);
+  
 
     return(
         <div className="editor">
@@ -40,6 +47,7 @@ export default function Editor(){
                 />
                 <EditArea 
                     links={userLinks}
+                    addNewLink={addNewLink}
                 />
             </div>
         </div>

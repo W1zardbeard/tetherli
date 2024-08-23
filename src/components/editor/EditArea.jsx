@@ -4,6 +4,11 @@ import EmptyEdit from "./EmptyEdit";
 import LinkBuilder from "./LinkBuilder";
 
 export default function EditArea(props){
+
+
+  
+
+
     return(
         <div className="editArea">
             <TitleDesc 
@@ -16,8 +21,11 @@ export default function EditArea(props){
                     style={"secondary"}
                     icon={false}
                     fullWidth={true}
+                    
+                    clickHandler={props.addNewLink} 
+                   
                 />
-                
+
                 {props.links?.length > 0 ? 
                 props.links.map((link, index) => (
                     <LinkBuilder 
