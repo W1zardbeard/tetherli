@@ -131,13 +131,32 @@ const options = [
 
   }
 
-  
+
+
 
 
 
 
   export default function Dropdown(props){
     
+
+
+    const [value, setValue] = useState(options[0]);
+ 
+
+
+    function handleChange(event){
+      const newValue = event.value;
+      var indexOfSelected = options.findIndex(x => x.value === newValue);
+      setValue(indexOfSelected); 
+      
+      
+     
+      props.setNewLink(newValue, props.indexOfThis);
+    }
+  
+  
+
     function findDefaultOption(passedType){ 
         var indexOfType = options.findIndex(x => x.value === passedType);
         return indexOfType;
@@ -150,17 +169,18 @@ const options = [
     },[props.type]);
 
       
-    
+   
 
   
     return(
         <div>
             <label>Platform</label>
             <Select 
-               defaultValue={options[defaultOption]}
+                defaultValue={value}
                 styles={styles}
                 options={options} 
-               
+                onChange={handleChange}
+                value={options[value]}
             />
         </div>
         

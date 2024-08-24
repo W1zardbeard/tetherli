@@ -19,7 +19,7 @@ export default function LinkCard(props){
             var linkStyle = {
                 backgroundColor: '#2D68FF'
             }
-            var iconSrc = "icon-linedin.svg";
+            var iconSrc = "icon-linkedin.svg";
             var name = "LinkedIn";
         break;
         case "youtube":
@@ -38,7 +38,7 @@ export default function LinkCard(props){
         break;
         case "twitch":
             var linkStyle = {
-                backgroundColor: '#EE3FC8'
+                backgroundColor: '#6441a5'
             }
             var iconSrc = "icon-twitch.svg";
             var name = "Twitch";
@@ -82,7 +82,7 @@ export default function LinkCard(props){
             var linkStyle = {
                 backgroundColor: '#EC7100'
             }
-            var iconSrc = "icon-stackoverflow.svg";
+            var iconSrc = "icon-stack-overflow.svg";
             var name = "Stack Overflow";
         break;
     }

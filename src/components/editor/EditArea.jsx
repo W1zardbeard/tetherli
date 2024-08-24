@@ -6,7 +6,6 @@ import LinkBuilder from "./LinkBuilder";
 export default function EditArea(props){
 
 
-  
 
 
     return(
@@ -30,9 +29,11 @@ export default function EditArea(props){
                 props.links.map((link, index) => (
                     <LinkBuilder 
                         key={index}
+                        indexOfThis={props.links[index].index}
                         numInList={index + 1}
                         type={link.type}
                         url={link.link}
+                        setNewLink={props.setNewLink}
                     /> 
                 ))
                 : 

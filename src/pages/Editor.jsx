@@ -14,25 +14,55 @@ export default function Editor(){
     const [userData, setUserData] = useState({});
     const [userLinks, setUserLinks] = useState();
 
+    //adding a new link
     function addNewLink(){
-        //userLinks.push({type: "github", link: "boobs"});
-        // console.log("push");
-        setUserLinks(userLinks => [...userLinks, {type: "github"}])
-        console.log(userLinks);
+        if(userLinks.length < 5){
+            setUserLinks(userLinks => [...userLinks, {index: userLinks.length + 1 , type: "github"}])
+        }
     }
 
-   
+   //get links from api
     useEffect(() =>{
         axios.get("/api/mockuserData").then((res) => {
             setUserData(res.data);
         })
     }, [])
 
+    //set links
     useEffect(() => {
         setUserLinks(userData.links);
     },[userData])
-   
 
+    //setNewlink
+    function setNewLink(selection, indexOfSelectionChange){
+        // console.log("user links: ");
+        // console.log(userLinks);
+        // console.log(" ");
+        // console.log("index of passed: " + indexOfSelectionChange);
+        //var realIndexOfSelected = indexOfSelected - 1;
+        var indexOfSelected = userLinks.findIndex(x => x.index === indexOfSelectionChange);
+
+        console.log(selection);
+        const newArray = userLinks.map(userLinkItem => {
+            // console.log(indexOfSelected)
+            if(userLinkItem.index === indexOfSelected + 1){
+                return{
+                    ...userLinkItem,
+                    type: selection,       
+                };
+            } else {
+                return userLinkItem;
+            }
+        });
+        
+        setUserLinks(newArray);
+       
+
+     
+
+    }
+   
+    console.log(userLinks);
   
 
     return(
@@ -48,6 +78,7 @@ export default function Editor(){
                 <EditArea 
                     links={userLinks}
                     addNewLink={addNewLink}
+                    setNewLink={setNewLink}
                 />
             </div>
         </div>

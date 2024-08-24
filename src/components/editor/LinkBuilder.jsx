@@ -10,6 +10,7 @@ export default function LinkBuilder(props){
         setLink(value);
     }
 
+    
 
     return(
         <div className="linkBuilder">
@@ -24,6 +25,8 @@ export default function LinkBuilder(props){
 
             <Dropdown 
                 type={props.type}
+                setNewLink={props.setNewLink}
+                indexOfThis={props.indexOfThis}
             />
 
             <div>
