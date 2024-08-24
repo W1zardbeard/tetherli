@@ -24,27 +24,28 @@ export default function Editor(){
    //get links from api
     useEffect(() =>{
         axios.get("/api/mockuserData").then((res) => {
+            var responseDataLinks = res.data.links;
+    
+            var indexAddedLinks = responseDataLinks.map((pulledLinks, index) =>{
+                return{
+                    index: index + 1,
+                    ...pulledLinks,
+                }
+            })
+  
+            setUserLinks(indexAddedLinks)
             setUserData(res.data);
         })
     }, [])
 
-    //set links
-    useEffect(() => {
-        setUserLinks(userData.links);
-    },[userData])
+
 
     //setNewlink
     function setNewLink(selection, indexOfSelectionChange){
-        // console.log("user links: ");
-        // console.log(userLinks);
-        // console.log(" ");
-        // console.log("index of passed: " + indexOfSelectionChange);
-        //var realIndexOfSelected = indexOfSelected - 1;
+        console.log(userLinks);
         var indexOfSelected = userLinks.findIndex(x => x.index === indexOfSelectionChange);
-
         console.log(selection);
         const newArray = userLinks.map(userLinkItem => {
-            // console.log(indexOfSelected)
             if(userLinkItem.index === indexOfSelected + 1){
                 return{
                     ...userLinkItem,
@@ -54,15 +55,10 @@ export default function Editor(){
                 return userLinkItem;
             }
         });
-        
         setUserLinks(newArray);
-       
-
-     
-
     }
    
-    console.log(userLinks);
+
   
 
     return(

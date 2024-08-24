@@ -107,14 +107,14 @@ var userData = {
   avatar: "bananas",
 
   links: [
-    // {
-    //   type: "github",
-    //   link: "https://gothhub.com"
-    // },
-    // {
-    //   type: "twitter",
-    //   link: "https://twitter.com"
-    // },
+    {
+      type: "github",
+      link: "https://gothhub.com"
+    },
+    {
+      type: "twitter",
+      link: "https://twitter.com"
+    },
     // {
     //   type: "instagram",
     //   link: "https://google.com"
