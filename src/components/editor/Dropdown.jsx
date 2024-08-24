@@ -122,12 +122,10 @@ const options = [
       fontWeight: state.isSelected ? "800" : "400",
       backgroundColor: state.isFocused ? "#F0ECFF" : "#FFFFFF",
       cursor: "pointer",
-      //filter: state.isSelected ? "invert(46%) sepia(23%) saturate(0%) hue-rotate(264deg) brightness(93%) contrast(89%)" : "filter: invert(29%) sepia(91%) saturate(5318%) hue-rotate(248deg) brightness(99%) contrast(102%)",
+      
       
     }),
-    // img:(baseStyles, state) => ({
-    //   filter: state.isSelected ? "invert(46%) sepia(23%) saturate(0%) hue-rotate(264deg) brightness(93%) contrast(89%)" : "filter: invert(29%) sepia(91%) saturate(5318%) hue-rotate(248deg) brightness(99%) contrast(102%)",
-    // })
+    
 
   }
 
