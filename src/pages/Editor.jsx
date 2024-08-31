@@ -58,8 +58,25 @@ export default function Editor(){
         setUserLinks(newArray);
     }
 
+
+    function updateLink(value, indexOfUpdate){
+        var indexOfSelected = userLinks.findIndex(x => x.index === indexOfUpdate);
+        const newArray = userLinks.map(userLinkItem => {
+            if(userLinkItem.index === indexOfSelected + 1){
+                return{
+                    ...userLinkItem,
+                    link: value,       
+                };
+            } else {
+                return userLinkItem;
+            }
+        });
+        setUserLinks(newArray);
+    }
+
     function saveLinks(){
         alert("hello i am saving good things");
+        axios.post("/api/saveLinks", userLinks)
     }
    
 
@@ -79,6 +96,7 @@ export default function Editor(){
                     links={userLinks}
                     addNewLink={addNewLink}
                     setNewLink={setNewLink}
+                    updateLink={updateLink}
                     saveLinks={saveLinks}
                 />
             </div>

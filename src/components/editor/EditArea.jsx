@@ -35,6 +35,7 @@ export default function EditArea(props){
                         type={link.type}
                         url={link.link}
                         setNewLink={props.setNewLink}
+                        updateLink={props.updateLink}
                     /> 
                 ))
                 : 

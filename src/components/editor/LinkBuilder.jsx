@@ -8,6 +8,7 @@ export default function LinkBuilder(props){
     function handleChange(event){
         const{name, value} = event.target;
         setLink(value);
+        props.updateLink(value, props.indexOfThis);
     }
 
     

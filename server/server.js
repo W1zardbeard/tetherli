@@ -136,6 +136,12 @@ app.get("/api/mockuserData", (req, res) => {
 })
 
 
+
+app.post("/api/saveLinks", (req, res) => {
+  console.log(req.body);
+})
+
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
   });
