@@ -12,6 +12,12 @@ export default function CTA(props){
                     className="btnPrimary" 
                     type={props.type}
                     disabled={props.disabled}
+                    onClick = {() => {
+                        if(props.clickHandler){
+                            props.clickHandler();
+                        }
+                        
+                    }}
                 >
                     {props.text}
                 </button>

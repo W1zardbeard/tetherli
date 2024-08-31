@@ -2,6 +2,7 @@ import TitleDesc from "../loginForm/TitleDesc";
 import CTA from "../CTA";
 import EmptyEdit from "./EmptyEdit";
 import LinkBuilder from "./LinkBuilder";
+import SaveEditBar from "./SaveEditBar";
 
 export default function EditArea(props){
 
@@ -39,6 +40,10 @@ export default function EditArea(props){
                 : 
                 <EmptyEdit />}
             </div>
+
+            <SaveEditBar 
+                saveLinks={props.saveLinks}
+            />
        
         </div>
     )

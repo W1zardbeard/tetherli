@@ -57,6 +57,10 @@ export default function Editor(){
         });
         setUserLinks(newArray);
     }
+
+    function saveLinks(){
+        alert("hello i am saving good things");
+    }
    
 
   
@@ -75,6 +79,7 @@ export default function Editor(){
                     links={userLinks}
                     addNewLink={addNewLink}
                     setNewLink={setNewLink}
+                    saveLinks={saveLinks}
                 />
             </div>
         </div>
