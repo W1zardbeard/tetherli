@@ -11,8 +11,10 @@ import axios from "axios";
 
 export default function Editor(){
 
+    var userID = 9;
+
     const [userData, setUserData] = useState({});
-    const [userLinks, setUserLinks] = useState();
+    const [userLinks, setUserLinks] = useState([]);
 
     //adding a new link
     function addNewLink(){
@@ -23,24 +25,34 @@ export default function Editor(){
 
    //get links from api
     useEffect(() =>{
-        axios.get("/api/mockuserData").then((res) => {
-            var responseDataLinks = res.data.links;
-    
-            var indexAddedLinks = responseDataLinks.map((pulledLinks, index) =>{
-                return{
-                    index: index + 1,
-                    ...pulledLinks,
-                }
-            })
-  
-            setUserLinks(indexAddedLinks)
-            setUserData(res.data);
+        axios.get("/api/userLinks", {
+            params:{
+                id: userID
+            }
         })
+        .then((res) => {
+          
+            var responseDataLinks = res.data;
+            console.log(res.data);
+            setUserLinks(res.data);
+            
+        })
+
+        axios.get("/api/userInfo", { 
+            params:{
+                id: userID
+            }
+        })
+        .then((res) => {
+            
+            setUserData(res.data[0]);
+        })
+            
     }, [])
 
 
 
-    //setNewlink
+    //setNewlink type
     function setNewLink(selection, indexOfSelectionChange){
         console.log(userLinks);
         var indexOfSelected = userLinks.findIndex(x => x.index === indexOfSelectionChange);
@@ -58,7 +70,7 @@ export default function Editor(){
         setUserLinks(newArray);
     }
 
-
+    //update url
     function updateLink(value, indexOfUpdate){
         var indexOfSelected = userLinks.findIndex(x => x.index === indexOfUpdate);
         const newArray = userLinks.map(userLinkItem => {

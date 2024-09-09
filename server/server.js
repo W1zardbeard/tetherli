@@ -109,11 +109,13 @@ var userData = {
   links: [
     {
       type: "github",
-      link: "https://gothhub.com"
+      link: "https://gothhub.com",
+      index: 1
     },
     {
       type: "twitter",
-      link: "https://twitter.com"
+      link: "https://twitter.com",
+      index: 2
     },
     // {
     //   type: "instagram",
@@ -131,8 +133,36 @@ var userData = {
 }
 
 //Mock user data api call ============================================
-app.get("/api/mockuserData", (req, res) => {
+app.get("/api/mockuserData", async (req, res) => {
   res.send(userData);
+})
+
+app.get("/api/userLinks", async (req, res) => {
+  // res.send(userData);
+  console.log(req.query.id);
+  try{
+    const getLinks = await db.query("SELECT * FROM links WHERE user_id = $1", [
+      req.query.id,
+    ]);
+    console.log(getLinks.rows);
+    res.send(getLinks.rows);
+  
+  }catch(err){
+    console.log(err)
+  }
+})
+
+app.get("/api/userInfo", async (req, res) => {
+  try{
+    const getInfo = await db.query("SELECT email FROM users WHERE id = $1", [
+      req.query.id,
+    ]);
+    console.log("user info below");
+    console.log(getInfo.rows);
+    res.send(getInfo.rows)
+  }catch(err){  
+    console.log(err);
+  }
 })
 
 

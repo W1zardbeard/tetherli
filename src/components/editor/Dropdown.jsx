@@ -137,8 +137,7 @@ const options = [
 
   export default function Dropdown(props){
     
-
-
+  
     const [value, setValue] = useState(options[0]);
  
 
@@ -156,14 +155,19 @@ const options = [
   
 
     function findDefaultOption(passedType){ 
+
         var indexOfType = options.findIndex(x => x.value === passedType);
+    
         return indexOfType;
     }
 
     var defaultOption = findDefaultOption(props.type);
 
     useEffect(() => {
-      defaultOption = findDefaultOption(props.type)
+  
+      var valueFinder = findDefaultOption(props.type);
+    
+      setValue(valueFinder)
     },[props.type]);
 
       
