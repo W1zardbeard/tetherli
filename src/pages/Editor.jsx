@@ -91,10 +91,11 @@ export default function Editor(){
         axios.post("/api/saveLinks", userLinks)
     }
    
-
+    console.log(userLinks);
   
 
     return(
+        
         <div className="editor">
             <Navbar 
                 editor={true}
