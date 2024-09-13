@@ -2,10 +2,14 @@
 import TitleDesc from "./TitleDesc";
 import { useState } from "react";
 import CTA from "../CTA"
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 
 export default function LoginForm(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     function handleChange(event){
         const{name, value} = event.target;
@@ -20,10 +24,26 @@ export default function LoginForm(){
         }
     }
 
-    function submitForm(){
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post('/api/login', {
+                email,
+                password
+            });
 
-    }
+            if (response.data.token) {
+                // Store the token (in localStorage or sessionStorage)
+                localStorage.setItem('token', response.data.token);
 
+                // Redirect the user to the editor page
+                navigate('/editor');
+            }
+        } catch (err) {
+            console.error('Login error:', err);
+            setError('Invalid email or password');
+        }
+    };
 
     return(
         <div className="loginForm">
@@ -31,7 +51,7 @@ export default function LoginForm(){
                 title="Login"
                 subText="Add your details below to get back into the app"
             />
-        <form name="loginForm" action="/api/login" method="POST">
+        <form name="loginForm" onSubmit={handleLogin}>
 
             {/*Email field */}
             <div>            
@@ -62,10 +82,11 @@ export default function LoginForm(){
                     />
                    
             </div>
+          
             <CTA 
                 text={"Login"}
                 style={"primary"}
-                onClick={submitForm}
+                onClick={handleLogin}
                 type={"submit"}
             />
           

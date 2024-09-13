@@ -2,6 +2,7 @@ import Navbar from "../components/editor/Navbar";
 import PhonePreview from "../components/editor/PhonePreview";
 import EditArea from "../components/editor/EditArea";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -11,10 +12,11 @@ import axios from "axios";
 
 export default function Editor(){
 
-    var userID = 9;
+    
 
     const [userData, setUserData] = useState({});
     const [userLinks, setUserLinks] = useState([]);
+    const navigate = useNavigate();
 
     //adding a new link
     function addNewLink(){
@@ -23,15 +25,43 @@ export default function Editor(){
         }
     }
 
+
+
+
+    //1. Token verification
+
+    useEffect(()=>{
+        const token = localStorage.getItem("token");
+        console.log(token);
+         if(!token){
+            navigate("/");
+            return;
+         }
+
+         //verify the token with the backend
+         axios.post("/api/verify-token", {}, {
+            headers: {Authorization: `Bearer ${token}`}
+         })
+         .then((res) =>{
+            if(res.status !== 200){
+                //if token is invalid, redirect to login
+                navigate("/");
+            }
+         })
+         .catch((err) => {
+            console.error("Token verification failed", err);
+            navigate("/");
+        })
+    }, [navigate]);
+
    //get links from api
     useEffect(() =>{
+        const token = localStorage.getItem("token");
         axios.get("/api/userLinks", {
-            params:{
-                id: userID
-            }
+            headers: { Authorization: `Bearer ${token}` }
         })
         .then((res) => {
-          
+         
             var responseDataLinks = res.data;
             console.log(res.data);
             setUserLinks(res.data);
@@ -40,7 +70,7 @@ export default function Editor(){
 
         axios.get("/api/userInfo", { 
             params:{
-                id: userID
+                headers: { Authorization: `Bearer ${token}` }
             }
         })
         .then((res) => {
@@ -87,8 +117,13 @@ export default function Editor(){
     }
 
     function saveLinks(){
+        const token = localStorage.getItem("token");
         alert("hello i am saving good things");
-        axios.post("/api/saveLinks", userLinks)
+
+        axios.post("/api/saveLinks", {userLinks}, {
+            headers: {Authorization: `Bearer ${token}`}
+         })
+       
     }
    
     console.log(userLinks);
