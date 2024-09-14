@@ -150,7 +150,7 @@ app.post("/api/register", async (req, res) => {
 
 
 app.get("/api/userLinks", authenticateToken, async (req, res) => {
- console.log(req.user.userCreds.userId);
+//  console.log(req.user.userCreds.userId);
   const userId = req.user.userCreds.userId;
 
   try{
@@ -169,16 +169,21 @@ app.get("/api/userLinks", authenticateToken, async (req, res) => {
   }
 })
 
+
+
 app.get("/api/userInfo", authenticateToken, async (req, res) => {
+  console.log("user info being tried");
   try{
+    
     const userId = req.user.userCreds.userId;
     const getInfo = await db.query("SELECT email FROM users WHERE id = $1", [
-      req.query.id,
+      userId,
     ]);
 
     if (getInfo.rows.length === 0) {
       return res.send("No Info!");
   }
+  console.log(getInfo.rows[0]);
     res.json(getInfo.rows[0]);
 
   

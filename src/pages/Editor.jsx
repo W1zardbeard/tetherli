@@ -69,13 +69,11 @@ export default function Editor(){
         })
 
         axios.get("/api/userInfo", { 
-            params:{
-                headers: { Authorization: `Bearer ${token}` }
-            }
+            headers: { Authorization: `Bearer ${token}` }
         })
         .then((res) => {
             
-            setUserData(res.data[0]);
+            setUserData(res.data);
         })
             
     }, [])
