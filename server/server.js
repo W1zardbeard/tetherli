@@ -6,10 +6,17 @@ import pg from "pg";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import multer from "multer";
+import {join, dirname} from "path";
+import { fileURLToPath } from "url";
+
+// Define __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Create express app
 const app = express();
 const port = 3000;
+app.use(express.static(join(__dirname, "public")));
 // Load environment variables
 env.config();
 
@@ -229,13 +236,14 @@ app.get("/api/userInfo", authenticateToken, async (req, res) => {
  
   try{
     const userId = req.user.userCreds.userId;
-    const getInfo = await db.query("SELECT email FROM users WHERE id = $1", [
+    const getInfo = await db.query("SELECT email, first_name, last_name, avatar FROM users WHERE id = $1", [
       userId,
     ]);
 
     if (getInfo.rows.length === 0) {
       return res.send("No Info!");
   }
+  console.log(getInfo.rows[0]);
     res.json(getInfo.rows[0]);
 
   

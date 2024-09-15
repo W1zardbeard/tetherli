@@ -71,7 +71,7 @@ export default function Editor(){
             headers: { Authorization: `Bearer ${token}` }
         })
         .then((res) => {
-            
+        
             setUserData(res.data);
         })
             
@@ -129,7 +129,6 @@ export default function Editor(){
        
     }
    
-
 
     return(
         
