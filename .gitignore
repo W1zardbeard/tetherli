@@ -155,4 +155,4 @@ dist
 .pnp.*
 
 
-server/userAvatars
+server/userAvatars/
