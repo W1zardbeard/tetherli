@@ -32,7 +32,7 @@ export default function Editor(){
 
     useEffect(()=>{
         const token = localStorage.getItem("token");
-        console.log(token);
+    
          if(!token){
             navigate("/");
             return;
@@ -63,7 +63,6 @@ export default function Editor(){
         .then((res) => {
          
             var responseDataLinks = res.data;
-            console.log(res.data);
             setUserLinks(res.data);
             
         })
@@ -82,9 +81,7 @@ export default function Editor(){
 
     //setNewlink type
     function setNewLink(selection, indexOfSelectionChange){
-        console.log(userLinks);
         var indexOfSelected = userLinks.findIndex(x => x.index === indexOfSelectionChange);
-        console.log(selection);
         const newArray = userLinks.map(userLinkItem => {
             if(userLinkItem.index === indexOfSelected + 1){
                 return{
@@ -116,16 +113,23 @@ export default function Editor(){
 
     function saveLinks(){
         const token = localStorage.getItem("token");
-        alert("hello i am saving good things");
+
 
         axios.post("/api/saveLinks", {userLinks}, {
             headers: {Authorization: `Bearer ${token}`}
-         })
+        })
+        .then((res) => {
+            // Handle the response here
+            console.log(res.data);
+        })
+        .catch((err) => {
+            // Handle any errors here
+            console.error("Error saving links", err);
+        });
        
     }
    
-    console.log(userLinks);
-  
+
 
     return(
         

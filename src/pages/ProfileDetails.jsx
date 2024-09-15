@@ -28,7 +28,6 @@ export default function ProfileDetails(){
 
     useEffect(()=>{
         const token = localStorage.getItem("token");
-        console.log(token);
          if(!token){
             navigate("/");
             return;
@@ -59,7 +58,6 @@ export default function ProfileDetails(){
     .then((res) => {
      
         var responseDataLinks = res.data;
-        console.log(res.data);
         setUserLinks(res.data);
         
     })
@@ -95,7 +93,9 @@ export default function ProfileDetails(){
                     links={userLinks}
                 />
 
-                <ProfileEdit />
+                <ProfileEdit 
+                    userDetails={userData}
+                />
               
             </div>
         </div>

@@ -549,6 +549,18 @@ button img {
   padding-bottom: 24px;
 }
 
+.profileEditSection {
+  background-color: #fafafa;
+  padding: 24px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.profileEditSection p {
+  color: #737373;
+}
+
 body, .root {
   background-color: #fafafa;
 }
