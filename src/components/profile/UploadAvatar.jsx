@@ -1,6 +1,14 @@
 import axios from 'axios';
+import { useState } from 'react';
 
-export default function AvatarUpload(props){
+export default function UploadAvatar(props){
+
+    const avatarPath = props.avatar ? encodeURI(props.avatar.trim()) : '';
+    const style = {
+        backgroundImage: `url(server/${avatarPath})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+    }
     
 
     const handleFileChange = (e) => {
@@ -31,17 +39,44 @@ export default function AvatarUpload(props){
         })
         .then((res) => {
             console.log(res);
+            //update the key to re-render the component
+           props.updateAvatar();
+            
+            
         })
         .catch((err) => {
             console.error("Error uploading avatar", err);
         });
-    }else {
-        //if the file is not an image, alert the user
-        alert("Only jpg, jpeg, png and gif files are allowed!");
-    };
-}
-    return (
-        <input type="file"  accept="image/*" onChange={handleFileChange}/>
+        }else {
+            //if the file is not an image, alert the user
+            alert("Only jpg, jpeg, png and gif files are allowed!");
+        };
+    }
+
+
+    
+        return (
+            props.uploaded ? 
+            <div className='uploadAvatar uploadedAvatar'>
+                <label htmlFor="file" style={style}>
+                    <span>
+                        <img src="src/assets/icon-upload-image.svg" alt="upload" />
+                        Upload new image
+                    </span>
+                </label>
+                <input  type="file" id="file" className='file'  accept="image/*" onChange={handleFileChange}/>
+            </div>
+            : 
+            <div className='uploadAvatar'>
+                <label htmlFor="file">
+                    <img src="src/assets/icon-upload-image.svg" alt="upload" />
+                    Upload image
+                </label>
+                <input  type="file" id="file" className='file'  accept="image/*" onChange={handleFileChange}/>
+            </div>
+        
     );
+
 }
+
     

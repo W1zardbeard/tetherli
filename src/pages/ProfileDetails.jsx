@@ -13,12 +13,11 @@ export default function ProfileDetails(){
     const [userData, setUserData] = useState({});
     const [userLinks, setUserLinks] = useState([]);
     const navigate = useNavigate();
+    const[uploadedImage, setUploadedImage] = useState(0);
 
-    //adding a new link
-    function addNewLink(){
-        if(userLinks.length < 5){
-            setUserLinks(userLinks => [...userLinks, {index: userLinks.length + 1 , type: "github"}])
-        }
+    //update the avatar
+    function updateAvatar(){
+        setUploadedImage(uploadedImage + 1);
     }
 
 
@@ -72,7 +71,17 @@ export default function ProfileDetails(){
         
 }, [])
 
-
+//Get avatar/ new data from db once the image is uploaded, basically forcing a re-render
+useEffect(() => {
+    console.log("ive been triggered ooo");
+    const token = localStorage.getItem("token");
+    axios.get("/api/userInfo", { 
+        headers: { Authorization: `Bearer ${token}` }
+    })
+    .then((res) => {
+        setUserData(res.data);
+    })
+},[uploadedImage])
 
 
 
@@ -95,6 +104,7 @@ export default function ProfileDetails(){
 
                 <ProfileEdit 
                     userDetails={userData}
+                    updateAvatar={updateAvatar}
                 />
               
             </div>

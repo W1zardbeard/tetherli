@@ -561,6 +561,67 @@ button img {
   color: #737373;
 }
 
+.file {
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  position: absolute;
+}
+
+.uploadAvatar label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #EFEBFF;
+  width: 192px;
+  height: 192px;
+  color: #633CFF;
+  font-family: "Instrument Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  letter-spacing: 0;
+  font-size: 1rem;
+  line-height: 24px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  border-radius: 12px;
+}
+.uploadAvatar label img {
+  filter: invert(24%) sepia(96%) saturate(4401%) hue-rotate(248deg) brightness(101%) contrast(101%);
+}
+.uploadAvatar label:hover {
+  cursor: pointer;
+}
+
+.uploadedAvatar {
+  background-color: #333333;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.uploadedAvatar span {
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #333333;
+}
+.uploadedAvatar span img {
+  filter: invert(14%) sepia(0%) saturate(1834%) hue-rotate(146deg) brightness(98%) contrast(82%);
+}
+.uploadedAvatar:hover {
+  opacity: 50%;
+}
+.uploadedAvatar:hover span {
+  visibility: visible;
+}
+
 body, .root {
   background-color: #fafafa;
 }

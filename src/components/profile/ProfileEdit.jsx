@@ -1,10 +1,12 @@
 import TitleDesc from "../loginForm/TitleDesc"
 import AvatarEdit from "./AvatarEdit"
+import { useState, useEffect } from "react"
 
 
 
 
 export default function ProfileEdit(props){
+
     return(
         <div className="editArea">
             <TitleDesc 
@@ -14,6 +16,7 @@ export default function ProfileEdit(props){
 
             <AvatarEdit 
                 avatar={props.userDetails.avatar}
+                updateAvatar={props.updateAvatar}
             />
             </div>
     )

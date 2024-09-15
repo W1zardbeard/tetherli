@@ -3,9 +3,10 @@ export default function UserProfile(props){
     const style = {
         backgroundImage: `url(server/${avatarPath})`,
         backgroundSize: 'cover',
+        backgroundPosition: 'center'
     }
 
-    console.log(props.userDetails?.avatar)
+
 
     return(
         <div className="userProfile">

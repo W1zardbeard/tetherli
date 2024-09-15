@@ -1,3 +1,4 @@
+import UploadAvatar from "./UploadAvatar"
 import AvatarUpload from "./UploadAvatar"
 
 
@@ -6,7 +7,17 @@ export default function AvatarEdit(props){
         <div className="profileEditSection">
             <p>Profile picture</p>
 
-            {props.avatar ? <h1>Avatar</h1> : <AvatarUpload />}
+            {props.avatar ? 
+            <UploadAvatar  
+                updateAvatar={props.updateAvatar} 
+                uploaded={true} 
+                avatar={props.avatar}
+            /> 
+            : 
+            <UploadAvatar 
+                updateAvatar={props.updateAvatar} 
+                uploaded={false}
+            />}
         </div>
     )
 }
