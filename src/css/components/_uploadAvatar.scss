@@ -44,9 +44,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        color:#000000;
+        color:#633CFF;
         img{
-            filter: invert(0%) sepia(9%) saturate(11%) hue-rotate(50deg) brightness(93%) contrast(100%);
+            filter: invert(25%) sepia(62%) saturate(6634%) hue-rotate(249deg) brightness(101%) contrast(100%);
         }
     }
       &:hover{
@@ -56,5 +56,10 @@
         }
             
         }
+    }
+
+    .avatarCont{
+        background-color:#EFEBFF;
+        border-radius: $r2;
     }
    

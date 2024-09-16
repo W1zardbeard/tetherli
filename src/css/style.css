@@ -235,6 +235,10 @@ label {
   filter: invert(46%) sepia(23%) saturate(0%) hue-rotate(264deg) brightness(93%) contrast(89%);
 }
 
+.noIcon {
+  padding-left: 12px;
+}
+
 button {
   padding-top: 12px;
   padding-bottom: 12px;
@@ -556,9 +560,33 @@ button img {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+}
+.profileEditSection .avatarAndHelp {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
 }
 .profileEditSection p {
   color: #737373;
+  width: 240px;
+}
+
+.editDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.inputRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: left;
 }
 
 .file {
@@ -610,16 +638,21 @@ button img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #000000;
+  color: #633CFF;
 }
 .uploadedAvatar span img {
-  filter: invert(0%) sepia(9%) saturate(11%) hue-rotate(50deg) brightness(93%) contrast(100%);
+  filter: invert(25%) sepia(62%) saturate(6634%) hue-rotate(249deg) brightness(101%) contrast(100%);
 }
 .uploadedAvatar:hover {
   opacity: 50%;
 }
 .uploadedAvatar:hover span {
   visibility: visible;
+}
+
+.avatarCont {
+  background-color: #EFEBFF;
+  border-radius: 12px;
 }
 
 body, .root {

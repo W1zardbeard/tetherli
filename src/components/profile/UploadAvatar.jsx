@@ -57,6 +57,7 @@ export default function UploadAvatar(props){
     
         return (
             props.uploaded ? 
+            <div className='avatarCont'>
             <div className='uploadAvatar uploadedAvatar'>
                 <label htmlFor="file" style={style}>
                     <span>
@@ -65,6 +66,7 @@ export default function UploadAvatar(props){
                     </span>
                 </label>
                 <input  type="file" id="file" className='file'  accept="image/*" onChange={handleFileChange}/>
+            </div>
             </div>
             : 
             <div className='uploadAvatar'>
