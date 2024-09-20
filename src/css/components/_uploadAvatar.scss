@@ -44,17 +44,21 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        color:#633CFF;
-        img{
-            filter: invert(25%) sepia(62%) saturate(6634%) hue-rotate(249deg) brightness(101%) contrast(100%);
+        color:$white;
+        background-color:rgba(0, 0, 0, 0.5);
+        height:100%;
+        width:100%;
+        border-radius: $r2;
+        img{ filter: invert(100%) sepia(11%) saturate(2%) hue-rotate(209deg) brightness(116%) contrast(100%);
         }
     }
       &:hover{
-        opacity:50%;
+        
         span{
             visibility: visible;
         }
             
+           
         }
     }
 

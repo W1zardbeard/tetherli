@@ -243,7 +243,7 @@ app.get("/api/userInfo", authenticateToken, async (req, res) => {
     if (getInfo.rows.length === 0) {
       return res.send("No Info!");
   }
-  console.log(getInfo.rows[0]);
+
     res.json(getInfo.rows[0]);
 
   
@@ -276,6 +276,7 @@ const upsertLinks = async (userId, savedLinks) =>{
 //Save links
 app.post("/api/saveLinks", authenticateToken, async (req, res) => {
 
+  console.log(req.body);
   const savedLinks = req.body.userLinks;
   const userId = req.user.userCreds.userId;
   try{
