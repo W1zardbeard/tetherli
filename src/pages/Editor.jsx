@@ -132,10 +132,11 @@ export default function Editor(){
 
     //removing links
     function removeLink(indexOfRemove){
-        var indexOfSelected = userLinks.findIndex(x => x.index === indexOfRemove);
-        const newArray = userLinks.filter(userLinkItem => userLinkItem.index !== indexOfSelected + 1);
+        console.log(indexOfRemove);
+        // var indexOfSelected = userLinks.findIndex(x => x.index === indexOfRemove);
+        // const newArray = userLinks.filter(userLinkItem => userLinkItem.index !== indexOfSelected + 1);
        
-        setUserLinks(newArray);
+        // setUserLinks(newArray);
     }
    
 
