@@ -84,6 +84,36 @@ useEffect(() => {
 },[uploadedImage])
 
 
+//update details of the user
+function updateDetails(event){
+    const{name, value} = event.target;
+    if(name === "firstName"){
+        setUserData({...userData, first_name: value});
+    }
+    else if(name === "lastName"){
+        setUserData({...userData, last_name: value});
+    }
+    else if(name === "email"){
+        setUserData({...userData, email: value});
+    }
+ 
+}
+
+
+//save details of the user
+function saveDetails(){
+    console.log("Save details clicked");
+    const token = localStorage.getItem("token");
+    axios.post("/api/updateUserInfo", userData, {
+        headers: { Authorization: `Bearer ${token}` }
+    })
+    .then((res) => {
+        console.log("User details updated");
+    })
+    .catch((err) => {
+        console.error("User details update failed", err);
+    })
+}
 
 
 
@@ -105,6 +135,8 @@ useEffect(() => {
                 <ProfileEdit 
                     userDetails={userData}
                     updateAvatar={updateAvatar}
+                    saveDetails={saveDetails}
+                    updateDetails={updateDetails}
                 />
               
             </div>

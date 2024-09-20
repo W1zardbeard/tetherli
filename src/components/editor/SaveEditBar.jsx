@@ -7,7 +7,7 @@ export default function SaveEditBar(props){
             <CTA 
                 text={"Save"}
                 style={"primary"}
-                clickHandler={props.saveLinks}
+                clickHandler={props.save}
             />
         </div>
     )

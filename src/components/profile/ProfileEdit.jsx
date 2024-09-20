@@ -9,8 +9,7 @@ import { useState, useEffect } from "react"
 
 export default function ProfileEdit(props){
 
-    console.log(props.userDetails);
-
+   
 
     return(
         <div className="editArea">
@@ -26,16 +25,13 @@ export default function ProfileEdit(props){
 
             <DetailsEdit 
                 userDetails={props.userDetails}
+                updateDetails={props.updateDetails}
             />
 
-##################################
-||                              ||
-||SORT OUT SAVE BAR FOR THIS BIT||
-||                              ||
-##################################
 
-<SaveEditBar 
-                saveLinks={props.saveLinks}
+
+            <SaveEditBar 
+                save={props.saveDetails}
             />
             </div>
 

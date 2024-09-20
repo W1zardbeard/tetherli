@@ -3,29 +3,44 @@ import {useState, useEffect} from 'react';
 export default function DetailsEdit(props){
 
    
-    //set the initial values of the input fields to the user's current details 
-    useEffect(()=>{
-        setEmail(props.userDetails.email);
-        setFname(props.userDetails.firstName);
-        setLname(props.userDetails.lastName);
-    },[props.userDetails]);
-
+  
     //state variables to store the user's details
-    const [fname, setFname] = useState(props.userDetails.firstName ? props.userDetails.firstName : "");
-    const [lname, setLname] = useState(props.userDetails.lastName ? props.userDetails.lastName : "");
-    const [email, setEmail] = useState(props.userDetails.email ? props.userDetails.email : "");
+    const [fname, setFname] = useState(props.userDetails.first_name || "");
+    const [lname, setLname] = useState(props.userDetails.last_name || "");
+    const [email, setEmail] = useState(props.userDetails.email || "");
+
+    useEffect(() => {
+        if (props.userDetails.first_name !== undefined) {
+            setFname(props.userDetails.first_name);
+        }
+    }, [props.userDetails.first_name]);
+
+    useEffect(() => {
+        if (props.userDetails.last_name !== undefined) {
+            setLname(props.userDetails.last_name);
+        }
+    }, [props.userDetails.last_name]);
+
+    useEffect(() => {
+        if (props.userDetails.email !== undefined) {
+            setEmail(props.userDetails.email);
+        }
+    }, [props.userDetails.email]);
 
     //function to handle changes in the input fields
     function handleChange(event){
         const{name, value} = event.target;
         if(name === "firstName"){
             setFname(value);
+            props.updateDetails(event);
         }
         else if(name === "lastName"){
             setLname(value);
+            props.updateDetails(event);
         }
         else if(name === "email"){
             setEmail(value);
+            props.updateDetails(event);
     }
     }	
 
