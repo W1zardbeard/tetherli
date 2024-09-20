@@ -135,7 +135,7 @@ export default function Editor(){
         console.log(indexOfRemove);
         // var indexOfSelected = userLinks.findIndex(x => x.index === indexOfRemove);
         // const newArray = userLinks.filter(userLinkItem => userLinkItem.index !== indexOfSelected + 1);
-       
+       right this is super stinky what the fuck
         // setUserLinks(newArray);
     }
    
