@@ -21,7 +21,17 @@ export default function LinkBuilder(props){
                     <img src="src/assets/icon-drag-and-drop.svg"/>
                     <p>Link #{props.numInList}</p>
                 </div>
-                <p className="remove">Remove</p>
+
+
+
+                <p 
+                className="remove"
+                onClick={() => props.removeLink(props.indexOfThis)}
+                >
+                    Remove
+                </p>
+
+                
             </div>
 
 

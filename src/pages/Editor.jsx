@@ -111,9 +111,10 @@ export default function Editor(){
         setUserLinks(newArray);
     }
 
+    //saving links
     function saveLinks(){
         const token = localStorage.getItem("token");
-
+        console.log(userLinks);
 
         axios.post("/api/saveLinks", {userLinks}, {
             headers: {Authorization: `Bearer ${token}`}
@@ -127,6 +128,14 @@ export default function Editor(){
             console.error("Error saving links", err);
         });
        
+    }
+
+    //removing links
+    function removeLink(indexOfRemove){
+        var indexOfSelected = userLinks.findIndex(x => x.index === indexOfRemove);
+        const newArray = userLinks.filter(userLinkItem => userLinkItem.index !== indexOfSelected + 1);
+       
+        setUserLinks(newArray);
     }
    
 
@@ -147,6 +156,7 @@ export default function Editor(){
                     setNewLink={setNewLink}
                     updateLink={updateLink}
                     saveLinks={saveLinks}
+                    removeLink={removeLink}
                 />
             </div>
         </div>
