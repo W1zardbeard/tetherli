@@ -20,8 +20,16 @@ export default function Editor(){
 
     //adding a new link
     function addNewLink(){
+     
+        //generate random id for the link
+        const randomId = Math.floor(Math.random() * 1000) + 1;
+        const userId = userData.id || 'defaultUserId'; // Replace 'defaultUserId' with a fallback if userData.id is not available
+        //concatenate the random id with the user id
+        const linkIdGen = `${randomId}${userId}`;
+        console.log(linkIdGen);
+        //make new link object
         if(userLinks.length < 5){
-            setUserLinks(userLinks => [...userLinks, {index: userLinks.length + 1 , type: "github"}])
+            setUserLinks(userLinks => [...userLinks, {link_id: linkIdGen , type: "github"}])
         }
     }
 
@@ -54,6 +62,9 @@ export default function Editor(){
         })
     }, [navigate]);
 
+
+
+
    //get links from api
     useEffect(() =>{
         const token = localStorage.getItem("token");
@@ -80,10 +91,11 @@ export default function Editor(){
 
 
     //setNewlink type
-    function setNewLink(selection, indexOfSelectionChange){
-        var indexOfSelected = userLinks.findIndex(x => x.index === indexOfSelectionChange);
+    function setNewLink(selection, linkId){
+        console.log(selection, linkId);
+        var indexOfSelected = userLinks.findIndex(x => x.link_id === linkId);
         const newArray = userLinks.map(userLinkItem => {
-            if(userLinkItem.index === indexOfSelected + 1){
+            if(userLinkItem.link_id === linkId){
                 return{
                     ...userLinkItem,
                     type: selection,       
@@ -96,10 +108,10 @@ export default function Editor(){
     }
 
     //update url
-    function updateLink(value, indexOfUpdate){
-        var indexOfSelected = userLinks.findIndex(x => x.index === indexOfUpdate);
+    function updateLink(value, linkId){
+        var indexOfSelected = userLinks.findIndex(x => x.index === linkId);
         const newArray = userLinks.map(userLinkItem => {
-            if(userLinkItem.index === indexOfSelected + 1){
+            if(userLinkItem.link_id === linkId){
                 return{
                     ...userLinkItem,
                     link: value,       
@@ -130,13 +142,12 @@ export default function Editor(){
        
     }
 
-    //removing links
-    function removeLink(indexOfRemove){
-        console.log(indexOfRemove);
-        // var indexOfSelected = userLinks.findIndex(x => x.index === indexOfRemove);
-        // const newArray = userLinks.filter(userLinkItem => userLinkItem.index !== indexOfSelected + 1);
-       
-        // setUserLinks(newArray);
+   
+
+  //remove link from user link array using index
+    function removeLink(link_id){
+        const updatedLinks = userLinks.filter((link) => link.link_id !== link_id);
+        setUserLinks(updatedLinks);
     }
    
 

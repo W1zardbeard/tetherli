@@ -8,7 +8,7 @@ export default function LinkBuilder(props){
     function handleChange(event){
         const{name, value} = event.target;
         setLink(value);
-        props.updateLink(value, props.indexOfThis);
+        props.updateLink(value, props.id);
     }
 
 
@@ -26,7 +26,7 @@ export default function LinkBuilder(props){
 
                 <p 
                 className="remove"
-                onClick={() => props.removeLink(props.indexOfThis)}
+                onClick={() => props.removeLink(props.id)}
                 >
                     Remove
                 </p>
@@ -38,7 +38,7 @@ export default function LinkBuilder(props){
             <Dropdown 
                 type={props.type}
                 setNewLink={props.setNewLink}
-                indexOfThis={props.indexOfThis}
+                id={props.id}
             />
 
             <div>

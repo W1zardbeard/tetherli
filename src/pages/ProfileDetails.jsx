@@ -20,7 +20,7 @@ export default function ProfileDetails(){
         setUploadedImage(uploadedImage + 1);
     }
 
-
+   
 
 
     //1. Token verification
