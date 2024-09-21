@@ -9,29 +9,22 @@ export default function LinkListMockup(props){
 
     
     return(
+      <div className="linkList">
+        {linkList?.map((link, index) => (
+          <LinkCard
+            key={link.link_id}
+            type={link.type}
+            link={link.link}
+          />
+        ))}
 
-    <div className="linkList">
-      {linkList?.map((link, index) => (
-   
-            <LinkCard
-                key={index}
-                type={link.type}
-                link={link.link}
-            />
-      ))}
-
-      {props.links?.length > 0 ? 
-        null
-      :
-      Array.from({length: totalLinks}, () => <EmptyLink />)
-      }
-       
-       
-     
-     
-    </div>  
-      
-  
-        
+        {props.links?.length > 0 ? 
+          null
+        :
+          Array.from({length: totalLinks}, (_, index) => (
+            <EmptyLink key={`empty-${index}`} />
+          ))
+        }
+      </div>  
     )
 }

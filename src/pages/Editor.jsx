@@ -16,6 +16,7 @@ export default function Editor(){
 
     const [userData, setUserData] = useState({});
     const [userLinks, setUserLinks] = useState([]);
+    const[forceUpdate, setForceUpdate] = useState(0);
     const navigate = useNavigate();
 
     //adding a new link
@@ -126,7 +127,7 @@ export default function Editor(){
     //saving links
     function saveLinks(){
         const token = localStorage.getItem("token");
-        console.log(userLinks);
+        
 
         axios.post("/api/saveLinks", {userLinks}, {
             headers: {Authorization: `Bearer ${token}`}
@@ -147,9 +148,11 @@ export default function Editor(){
   //remove link from user link array using index
     function removeLink(link_id){
         const updatedLinks = userLinks.filter((link) => link.link_id !== link_id);
+    
         setUserLinks(updatedLinks);
     }
    
+
 
     return(
         

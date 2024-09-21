@@ -30,7 +30,7 @@ export default function EditArea(props){
                 {props.links?.length > 0 ? 
                 props.links.map((link, index) => (
                     <LinkBuilder 
-                        key={index}
+                        key={link.link_id}
                         id={link.link_id}
                         numInList={index + 1}
                         type={link.type}
