@@ -35,11 +35,13 @@ export default function Navbar(props){
 
     return(
         <div className="navbar">
+            <a href="/">
             <Logo 
                 large={true}
                 width={146}
                 editor={true}
             />
+            </a>
 
             {/* <CTAe 
                 type={false}

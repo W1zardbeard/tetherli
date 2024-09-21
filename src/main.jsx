@@ -11,6 +11,7 @@ import ErrorPage from "./pages/ErrorPage.jsx";
 import MainTestPage from './pages/MainTestpage.jsx';
 import Editor from './pages/Editor.jsx';
 import ProfileDetails from './pages/ProfileDetails.jsx';
+import TestProfilePage from './pages/TestProfilePage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,12 @@ const router = createBrowserRouter([
   {
     path: "/profileDetails",
     element: <ProfileDetails />
+  },
+  {
+    path: "/user/:username",
+    element: <TestProfilePage />
   }
+
 ]);
 
 

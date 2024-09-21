@@ -54,6 +54,13 @@ export default function DetailsEdit(props){
             props.updateDetails(event);
         }
         else if(name === "username"){  
+            //disable spaces in username
+            if(value.includes(" ")){
+                //alert user
+                alert("Username cannot contain spaces");
+                return;
+            }
+
             setUsername(value);
             props.updateDetails(event);
         }

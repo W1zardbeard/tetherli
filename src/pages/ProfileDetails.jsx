@@ -127,6 +127,7 @@ function saveDetails(){
         <div className="editor">
             <Navbar 
                 profile={true}
+                username={userData.username}
             />
              <div className="mainAreaWrapper">
                 <PhonePreview 
