@@ -52,30 +52,36 @@ const options = [
           Steam
         </div>
        ) },
-    { value: 'freecodecamp', label: (
-      <div className='typeName'>
-        <img src="src/assets/icon-freecodecamp.svg"/>
-          FreeCodeCamp
-        </div>
-       ) },
-    { value: 'gitlab', label: (
-      <div className='typeName'>
-        <img src="src/assets/icon-gitlab.svg"/>
-          GitLab
-        </div>
-       ) },
-    { value: 'hashnode', label: (
-      <div className='typeName'>
-        <img src="src/assets/icon-hashnode.svg"/>
-          Hashnode
-        </div>
-       ) },
-    { value: 'stackoverflow', label: (
-      <div className='typeName'>
-        <img src="src/assets/icon-stack-overflow.svg"/>
-          Stack Overflow
-        </div>
-       ) },
+       { value: 'custom', label: (
+        <div className='typeName'>
+          <img src="src/assets/icon-custom.svg"/>
+            Custom link
+          </div>
+         ) },
+    // { value: 'freecodecamp', label: (
+    //   <div className='typeName'>
+    //     <img src="src/assets/icon-freecodecamp.svg"/>
+    //       FreeCodeCamp
+    //     </div>
+    //    ) },
+    // { value: 'gitlab', label: (
+    //   <div className='typeName'>
+    //     <img src="src/assets/icon-gitlab.svg"/>
+    //       GitLab
+    //     </div>
+    //    ) },
+    // { value: 'hashnode', label: (
+    //   <div className='typeName'>
+    //     <img src="src/assets/icon-hashnode.svg"/>
+    //       Hashnode
+    //     </div>
+    //    ) },
+    // { value: 'stackoverflow', label: (
+    //   <div className='typeName'>
+    //     <img src="src/assets/icon-stack-overflow.svg"/>
+    //       Stack Overflow
+    //     </div>
+    //    ) },
   ]
 
 

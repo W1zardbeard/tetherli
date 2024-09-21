@@ -85,6 +85,17 @@ export default function LinkCard(props){
             var iconSrc = "icon-stack-overflow.svg";
             var name = "Stack Overflow";
         break;
+        case "custom":
+            var linkStyle = {
+                backgroundColor: '#633CFF',
+               
+                backgroundColor: "-webkit-linear-gradient(to left, #633CFF, #ff00cc)",  /* Chrome 10-25, Safari 5.1-6 */
+                background: "linear-gradient(to right, #633CFF, #ff00cc)" /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                
+            }
+            var iconSrc = "icon-custom.svg";
+            var name = "Custom";
+        break;
     }
     
 

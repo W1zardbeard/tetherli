@@ -280,12 +280,13 @@ app.post("/api/saveLinks", authenticateToken, async (req, res) => {
   const savedLinks = req.body.userLinks;
   const userId = req.user.userCreds.userId;
   try{
-    
     await db.query("DELETE FROM links WHERE user_id = $1", [userId]);
+    upsertLinks(userId, savedLinks);
+    res.status(200).send("Links saved successfully");
   }catch (err){
     console.error("Error deleting links links: ", err);
   }
-  upsertLinks(userId, savedLinks);
+  
   
 })
 

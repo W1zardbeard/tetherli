@@ -127,14 +127,14 @@ export default function Editor(){
     //saving links
     function saveLinks(){
         const token = localStorage.getItem("token");
-        
-
         axios.post("/api/saveLinks", {userLinks}, {
             headers: {Authorization: `Bearer ${token}`}
         })
         .then((res) => {
             // Handle the response here
-            console.log(res.data);
+            //if 200 then show success message
+            
+            console.log(res.status);
         })
         .catch((err) => {
             // Handle any errors here
