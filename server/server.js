@@ -236,7 +236,7 @@ app.get("/api/userInfo", authenticateToken, async (req, res) => {
  
   try{
     const userId = req.user.userCreds.userId;
-    const getInfo = await db.query("SELECT email, first_name, last_name, avatar FROM users WHERE id = $1", [
+    const getInfo = await db.query("SELECT email, first_name, last_name, avatar, username, id FROM users WHERE id = $1", [
       userId,
     ]);
 
@@ -258,12 +258,12 @@ app.get("/api/userInfo", authenticateToken, async (req, res) => {
 //Save links query
 const upsertLinks = async (userId, savedLinks) =>{
   const query = `
-  INSERT INTO links (user_id, link, type, index)
+  INSERT INTO links (user_id, link, type, link_id)
   VALUES ($1, $2, $3, $4)
   `
   try {
     for (const link of savedLinks) {
-      const values = [userId, link.link, link.type, link.index];
+      const values = [userId, link.link, link.type, link.link_id];
       await db.query(query, values);
       console.log(`Upserted link: ${link.link}`);
     }

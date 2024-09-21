@@ -382,7 +382,7 @@ button img {
   padding-left: 35px;
   padding-right: 35px;
   padding-bottom: 53px;
-  gap: 56px;
+  gap: 32px;
 }
 
 .editArea {
@@ -451,6 +451,19 @@ button img {
   justify-content: center;
   align-items: center;
   gap: 8px;
+}
+.userProfile .details div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.userProfile .details div .username {
+  color: #737373;
+  font-weight: 700;
+}
+.userProfile .details div p {
+  color: #737373;
 }
 
 .linkCard {

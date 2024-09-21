@@ -144,20 +144,16 @@ const options = [
 
     function handleChange(event){
       const newValue = event.value;
-      var indexOfSelected = options.findIndex(x => x.value === newValue);
-      setValue(indexOfSelected); 
-      
-      
-     
-      props.setNewLink(newValue, props.indexOfThis);
+      var idOfSelected = options.findIndex(x => x.value === newValue);
+      setValue(idOfSelected); 
+
+      props.setNewLink(newValue, props.id);
     }
   
   
 
     function findDefaultOption(passedType){ 
-
         var indexOfType = options.findIndex(x => x.value === passedType);
-    
         return indexOfType;
     }
 
