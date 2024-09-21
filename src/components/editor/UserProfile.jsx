@@ -16,7 +16,7 @@ export default function UserProfile(props){
             <div className="details">
                 {props.userDetails?.username ? <h2>{props.userDetails.username}</h2> : <div className="empty emptyDetails emptyName"></div>}
                 <div>
-                    {props.userDetails?.email ? <p className="username bodySmall">{props.userDetails.first_name} {props.userDetails.last_name}</p> :<div className=" empty emptyDetails emptyEmail"></div>}
+                    {props.userDetails?.email ? <p className="username bodySmall">({props.userDetails.first_name} {props.userDetails.last_name})</p> :<div className=" empty emptyDetails emptyEmail"></div>}
                     {props.userDetails?.email ? <p className="bodySmall">{props.userDetails.email}</p> :<div className=" empty emptyDetails emptyEmail"></div>}
                 </div>
             </div>

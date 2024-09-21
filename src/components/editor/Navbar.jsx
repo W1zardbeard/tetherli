@@ -25,6 +25,14 @@ export default function Navbar(props){
 
     }
    
+    //create preview page based on user username
+    function previewOpen(){
+        // window.open("/preview?user=" + `${props.username}`);
+         window.open("/user/" + `${props.username}`);
+    }
+
+
+
     return(
         <div className="navbar">
             <Logo 
@@ -60,7 +68,7 @@ export default function Navbar(props){
                 text={"Preview"}
                 style={"secondary"}
                 icon={true}
-            
+                clickHandler={previewOpen}
                 
             />
       

@@ -159,6 +159,7 @@ export default function Editor(){
         <div className="editor">
             <Navbar 
                 editor={true}
+                username={userData.username}
             />
             <div className="mainAreaWrapper">
                 <PhonePreview 

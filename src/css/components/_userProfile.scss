@@ -20,11 +20,17 @@
         align-items: center;
         gap:$s1;
 
+        h2{
+            color:$purplePrimary;
+        }
+
         div{
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+
+            
 
             .username{
                 color:$grey;

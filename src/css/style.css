@@ -452,6 +452,9 @@ button img {
   align-items: center;
   gap: 8px;
 }
+.userProfile .details h2 {
+  color: #633CFF;
+}
 .userProfile .details div {
   display: flex;
   flex-direction: column;
@@ -560,8 +563,6 @@ button img {
   border-top: 1px solid #d9d9d9;
   bottom: 0;
   justify-content: flex-end;
-  padding-left: 40px;
-  padding-right: 40px;
   padding-top: 24px;
   padding-bottom: 24px;
 }
@@ -573,7 +574,8 @@ button img {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  width: 100%;
 }
 .profileEditSection .avatarAndHelp {
   display: flex;
@@ -583,7 +585,8 @@ button img {
 }
 .profileEditSection p {
   color: #737373;
-  width: 240px;
+  width: 180px;
+  min-width: 180px;
 }
 
 .editDetails {
@@ -596,10 +599,14 @@ button img {
 
 .inputRow {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   width: 100%;
   text-align: left;
+}
+.inputRow p {
+  width: 180px;
+  min-width: 180px;
 }
 
 .file {

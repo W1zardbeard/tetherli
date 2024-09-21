@@ -18,7 +18,7 @@ export default function LinkBuilder(props){
         <div className="linkBuilder">
             <div className="linkHeader">
                 <div className="linkTitle">
-                    <img src="src/assets/icon-drag-and-drop.svg"/>
+                   
                     <p>Link #{props.numInList}</p>
                 </div>
 

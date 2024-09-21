@@ -5,7 +5,8 @@
     display:flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    width:100%;
 
     .avatarAndHelp{
         display:flex;
@@ -16,7 +17,8 @@
 
     p{
         color: $grey;
-        width:240px;
+        width:180px;
+        min-width: 180px;
     }
 }
 
@@ -30,8 +32,13 @@
 
 .inputRow{
     display:flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     width:100%;
     text-align: left;
+
+    p{
+        width:180px;
+        min-width: 180px;
+    }
 }
