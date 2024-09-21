@@ -21,7 +21,7 @@ export default function ProfileDetails(){
     }
 
    
-
+   
 
     //1. Token verification
 
@@ -73,7 +73,6 @@ export default function ProfileDetails(){
 
 //Get avatar/ new data from db once the image is uploaded, basically forcing a re-render
 useEffect(() => {
-    console.log("ive been triggered ooo");
     const token = localStorage.getItem("token");
     axios.get("/api/userInfo", { 
         headers: { Authorization: `Bearer ${token}` }
@@ -95,6 +94,9 @@ function updateDetails(event){
     }
     else if(name === "email"){
         setUserData({...userData, email: value});
+    }
+    else if(name === "username"){
+        setUserData({...userData, username: value});
     }
  
 }

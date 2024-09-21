@@ -331,14 +331,14 @@ app.post("/api/updateUserInfo", authenticateToken, async (req, res) => {
   console.log(req.body);
   const userId = req.user.userCreds.userId;
   console.log(userId); 
-  const { email, first_name, last_name } = req.body;
+  const { email, first_name, last_name, username } = req.body;
   const query = `
   UPDATE users
-  SET email = $1, first_name = $2, last_name = $3
-  WHERE id = $4
+  SET email = $1, first_name = $2, last_name = $3, username = $4
+  WHERE id = $5
   `
   try{
-    await db.query(query, [email, first_name, last_name, userId]);
+    await db.query(query, [email, first_name, last_name, username, userId]);
     res.send("User details updated");
   }catch(err){
     console.error("Error updating user details: ", err);
