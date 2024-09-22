@@ -290,6 +290,22 @@ app.post("/api/saveLinks", authenticateToken, async (req, res) => {
   
 })
 
+//remove specific link
+app.post("/api/removeLink", authenticateToken, async (req, res) => {
+  const userId = req.user.userCreds.userId;
+  const link_id = req.body.link_id;
+
+ 
+  try{
+    await db.query("DELETE FROM links WHERE link_id = $1 AND user_id = $2", [link_id, userId]);
+    console.log(link_id + ": Link removed successfully");
+    res.send("Link removed successfully");
+  }catch(err){
+    console.error("Error removing link: ", err);
+    res.status(500).send("Server error");
+  }
+})
+
 
 //Upload avatar
 app.post("/api/uploadAvatar", authenticateToken, upload.single("file"), async (req, res) => {

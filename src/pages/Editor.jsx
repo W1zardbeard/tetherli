@@ -4,6 +4,9 @@ import EditArea from "../components/editor/EditArea";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import axios from "axios";
 
 
@@ -12,92 +15,116 @@ import axios from "axios";
 
 export default function Editor(){
 
-    
-
     const [userData, setUserData] = useState({});
     const [userLinks, setUserLinks] = useState([]);
     const[forceUpdate, setForceUpdate] = useState(0);
     const navigate = useNavigate();
 
-    //adding a new link
+    // ============================
+    // Function to add a new link
+    // ============================
     function addNewLink(){
-     
-        //generate random id for the link
+        // Generate a random ID for the link
         const randomId = Math.floor(Math.random() * 1000) + 1;
+        
+        // Retrieve the user ID from userData or use a default value if not available
         const userId = userData.id || 'defaultUserId'; // Replace 'defaultUserId' with a fallback if userData.id is not available
-        //concatenate the random id with the user id
+        
+        // Concatenate the random ID with the user ID to create a unique link ID
         const linkIdGen = `${randomId}${userId}`;
         console.log(linkIdGen);
-        //make new link object
+        
+        // Create a new link object and add it to the userLinks array if the length is less than 5
         if(userLinks.length < 5){
-            setUserLinks(userLinks => [...userLinks, {link_id: linkIdGen , type: "github"}])
+            setUserLinks(userLinks => [...userLinks, {link_id: linkIdGen , type: "github"}]);
         }
     }
 
 
 
 
-    //1. Token verification
+    // ============================
+    // 1. Token verification
+    // ============================
 
-    useEffect(()=>{
+    useEffect(() => {
+        // Retrieve the token from local storage
         const token = localStorage.getItem("token");
-    
-         if(!token){
+
+        // If no token is found, navigate to the login page
+        if (!token) {
             navigate("/");
             return;
-         }
+        }
 
-         //verify the token with the backend
-         axios.post("/api/verify-token", {}, {
-            headers: {Authorization: `Bearer ${token}`}
-         })
-         .then((res) =>{
-            if(res.status !== 200){
-                //if token is invalid, redirect to login
+        // Verify the token with the backend
+        axios.post("/api/verify-token", {}, {
+            headers: { Authorization: `Bearer ${token}` }
+        })
+        .then((res) => {
+            // If the token is invalid, navigate to the login page
+            if (res.status !== 200) {
                 navigate("/");
             }
-         })
-         .catch((err) => {
+        })
+        .catch((err) => {
+            // Log any errors and navigate to the login page
             console.error("Token verification failed", err);
             navigate("/");
-        })
+        });
     }, [navigate]);
 
 
 
 
-   //get links from api
-    useEffect(() =>{
+    // ============================
+    // Fetch user links and user info from the API
+    // ============================
+    useEffect(() => {
+        // Retrieve the token from local storage
         const token = localStorage.getItem("token");
+
+        // Fetch user links from the backend
         axios.get("/api/userLinks", {
             headers: { Authorization: `Bearer ${token}` }
         })
         .then((res) => {
-         
-            var responseDataLinks = res.data;
+            // Store the retrieved links in the state
             setUserLinks(res.data);
-            
         })
+        .catch((err) => {
+            console.error("Error fetching user links", err);
+        });
 
+        // Fetch user info from the backend
         axios.get("/api/userInfo", { 
             headers: { Authorization: `Bearer ${token}` }
         })
         .then((res) => {
-        
+            // Store the retrieved user info in the state
             setUserData(res.data);
         })
-            
-    }, [])
+        .catch((err) => {
+            console.error("Error fetching user info", err);
+        });
+    }, []);
 
 
 
-    //setNewlink type
+    // ============================
+    // Function to set the type of a link
+    // ============================
     function setNewLink(selection, linkId){
+        // Log the selection and linkId for debugging purposes
         console.log(selection, linkId);
+
+        // Find the index of the link to be updated
         var indexOfSelected = userLinks.findIndex(x => x.link_id === linkId);
+
+        // Create a new array with the updated link type
         const newArray = userLinks.map(userLinkItem => {
             if(userLinkItem.link_id === linkId){
-                return{
+                return {
                     ...userLinkItem,
                     type: selection,       
                 };
@@ -105,15 +132,23 @@ export default function Editor(){
                 return userLinkItem;
             }
         });
+
+        // Update the state with the new array
         setUserLinks(newArray);
     }
 
-    //update url
+
+    // ============================
+    // Function to update the URL of a link
+    // ============================
     function updateLink(value, linkId){
+        // Find the index of the link to be updated
         var indexOfSelected = userLinks.findIndex(x => x.index === linkId);
+        
+        // Create a new array with the updated link
         const newArray = userLinks.map(userLinkItem => {
             if(userLinkItem.link_id === linkId){
-                return{
+                return {
                     ...userLinkItem,
                     link: value,       
                 };
@@ -121,41 +156,76 @@ export default function Editor(){
                 return userLinkItem;
             }
         });
+        
+        // Update the state with the new array
         setUserLinks(newArray);
     }
 
-    //saving links
+
+
+    // ============================
+    // Function to save links to the backend
+    // ============================
     function saveLinks(){
+        // Retrieve the token from local storage
         const token = localStorage.getItem("token");
+
+        // Make a POST request to save the userLinks
         axios.post("/api/saveLinks", {userLinks}, {
             headers: {Authorization: `Bearer ${token}`}
         })
         .then((res) => {
             // Handle the response here
-            //if 200 then show success message
-            
+            // If the response status is 200, show a success message
             console.log(res.status);
         })
         .catch((err) => {
             // Handle any errors here
             console.error("Error saving links", err);
         });
-       
     }
 
    
 
-  //remove link from user link array using index
+    // ============================
+    // Function to remove a link from the userLinks array using link_id
+    // ============================
     function removeLink(link_id){
+        // Filter out the link with the specified link_id
         const updatedLinks = userLinks.filter((link) => link.link_id !== link_id);
-    
-        setUserLinks(updatedLinks);
+        
+        console.log(link_id);
+
+        // Retrieve the token from local storage
+        const token = localStorage.getItem("token");
+        //make post request to remove link
+        axios.post("/api/removeLink", {link_id}, {
+            headers: {Authorization: `Bearer ${token}`}
+        })
+        .then((res) => {
+            // Handle the response here
+            // If the response status is 200, show a success message
+            console.log(res.status);
+
+            // Show a toast notification indicating successful removal
+            toast.success("Link removed successfully", {
+                autoClose: 2000,
+                position: "top-center",
+            });
+             // Update the state with the new array of links
+            setUserLinks(updatedLinks);
+        })
+        .catch((err) => {
+            // Handle any errors here
+            console.error("Error removing link", err);
+        });
     }
    
 
-
+// ============================
+// Return part of the component
+// ============================
     return(
-        
         <div className="editor">
             <Navbar 
                 editor={true}
@@ -166,6 +236,7 @@ export default function Editor(){
                     userDetails={userData}
                     links={userLinks}
                 />
+ 
                 <EditArea 
                     links={userLinks}
                     addNewLink={addNewLink}
@@ -174,7 +245,9 @@ export default function Editor(){
                     saveLinks={saveLinks}
                     removeLink={removeLink}
                 />
+                
             </div>
+            <ToastContainer />
         </div>
         
     )
