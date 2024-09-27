@@ -26,14 +26,10 @@ export default function Editor(){
     function addNewLink(){
         // Generate a random ID for the link
         const randomId = Math.floor(Math.random() * 1000) + 1;
-        
         // Retrieve the user ID from userData or use a default value if not available
         const userId = userData.id || 'defaultUserId'; // Replace 'defaultUserId' with a fallback if userData.id is not available
-        
         // Concatenate the random ID with the user ID to create a unique link ID
-        const linkIdGen = `${randomId}${userId}`;
-        console.log(linkIdGen);
-        
+        const linkIdGen = `${randomId}${userId}`;     
         // Create a new link object and add it to the userLinks array if the length is less than 5
         if(userLinks.length < 5){
             setUserLinks(userLinks => [...userLinks, {link_id: linkIdGen , type: "github"}]);
@@ -50,13 +46,11 @@ export default function Editor(){
     useEffect(() => {
         // Retrieve the token from local storage
         const token = localStorage.getItem("token");
-
         // If no token is found, navigate to the login page
         if (!token) {
             navigate("/");
             return;
         }
-
         // Verify the token with the backend
         axios.post("/api/verify-token", {}, {
             headers: { Authorization: `Bearer ${token}` }
@@ -93,7 +87,10 @@ export default function Editor(){
             setUserLinks(res.data);
         })
         .catch((err) => {
-            console.error("Error fetching user links", err);
+            toast.error("Error fetching links", {
+                autoClose: 2000,
+                position: "top-center",
+            });
         });
 
         // Fetch user info from the backend
@@ -105,7 +102,10 @@ export default function Editor(){
             setUserData(res.data);
         })
         .catch((err) => {
-            console.error("Error fetching user info", err);
+           toast.error("Error fetching user info", {
+                autoClose: 2000,
+                position: "top-center",
+            });
         });
     }, []);
 
@@ -115,12 +115,8 @@ export default function Editor(){
     // Function to set the type of a link
     // ============================
     function setNewLink(selection, linkId){
-        // Log the selection and linkId for debugging purposes
-        console.log(selection, linkId);
-
         // Find the index of the link to be updated
         var indexOfSelected = userLinks.findIndex(x => x.link_id === linkId);
-
         // Create a new array with the updated link type
         const newArray = userLinks.map(userLinkItem => {
             if(userLinkItem.link_id === linkId){
@@ -178,10 +174,18 @@ export default function Editor(){
             // Handle the response here
             // If the response status is 200, show a success message
             console.log(res.status);
+            toast.success("Link(s) saved successfully", {
+                autoClose: 2000,
+                position: "top-center",
+            });
         })
         .catch((err) => {
             // Handle any errors here
             console.error("Error saving links", err);
+            toast.error("Error saving links", {
+                autoClose: 2000,
+                position: "top-center",
+            });
         });
     }
 
@@ -204,9 +208,6 @@ export default function Editor(){
         })
         .then((res) => {
             // Handle the response here
-            // If the response status is 200, show a success message
-            console.log(res.status);
-
             // Show a toast notification indicating successful removal
             toast.success("Link removed successfully", {
                 autoClose: 2000,
@@ -217,7 +218,10 @@ export default function Editor(){
         })
         .catch((err) => {
             // Handle any errors here
-            console.error("Error removing link", err);
+            toast.error("Error removing link", {
+                autoClose: 2000,
+                position: "top-center",
+            });
         });
     }
    

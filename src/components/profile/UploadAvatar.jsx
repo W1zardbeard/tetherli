@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function UploadAvatar(props){
 
@@ -26,7 +28,10 @@ export default function UploadAvatar(props){
 
 
         if(e.target.files[0].size > 1048576){
-            alert("File is too big! Max file size is 1MB");
+            toast.error("File is too big! Max file size is 1MB", {
+                autoClose: 2000,
+                position: "top-center",
+            });
             return;
         }
         //check if the file is an image
@@ -38,18 +43,28 @@ export default function UploadAvatar(props){
             headers: {Authorization: `Bearer ${token}`}
         })
         .then((res) => {
-            console.log(res);
-            //update the key to re-render the component
+           //update the key to re-render the component
            props.updateAvatar();
+           toast.success("Avatar uploaded successfully", {
+            autoClose: 2000,
+            position: "top-center", 
+        });
             
             
         })
         .catch((err) => {
-            console.error("Error uploading avatar", err);
+            toast.error("Error uploading avatar", {
+                autoClose: 2000,
+                position: "top-center",
+            });
         });
         }else {
             //if the file is not an image, alert the user
-            alert("Only jpg, jpeg, png and gif files are allowed!");
+            toast.error("Only jpg, jpeg, png and gif files are allowed!", {
+                autoClose: 2000,
+                position: "top-center",
+            });
+            return;
         };
     }
 

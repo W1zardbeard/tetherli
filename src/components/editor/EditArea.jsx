@@ -46,6 +46,7 @@ export default function EditArea(props){
             </div>
 
             <SaveEditBar 
+                linkLength={props.links?.length}
                 save={props.saveLinks}
             />
        
