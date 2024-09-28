@@ -3,11 +3,15 @@ import Logo from "../Logo";
 import NavLink from "./NavLink";
 // import CTAe from "./ctaExample";
 import CTA from "../CTA";
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar(props){
 
     const [linksActiveLink, setLinksActiveLink] = useState(props.editor);
     const [profileActiveLink, setProfileActiveLink] = useState(props.profile);
+
+    //init navigate  
+    const navigate = useNavigate();
 
     function handleClick(link){
         switch(link){
@@ -27,8 +31,7 @@ export default function Navbar(props){
    
     //create preview page based on user username
     function previewOpen(){
-        // window.open("/preview?user=" + `${props.username}`);
-         window.open("/user/" + `${props.username}`);
+         navigate("/preview/" + `${props.username}`);
     }
 
 
@@ -43,11 +46,7 @@ export default function Navbar(props){
             />
             </a>
 
-            {/* <CTAe 
-                type={false}
-                text={"Link"}
-                href={props.linkTo}
-            /> */}
+            
             <div className="navLinksCont">
                 <NavLink 
                     onClick={handleClick}
