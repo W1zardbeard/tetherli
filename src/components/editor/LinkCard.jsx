@@ -102,10 +102,10 @@ export default function LinkCard(props){
     return(
         <div className="linkCard " style={linkStyle}>
             <div className="nameAndIcon">
-                <img src={"src/assets/" + iconSrc} />
+                <img src={"../src/assets/" + iconSrc} />
                 <p>{name}</p>
             </div>
-            <img src="src/assets/icon-arrow-right.svg"/>
+            <img src="../src/assets/icon-arrow-right.svg"/>
 
         </div>
     )

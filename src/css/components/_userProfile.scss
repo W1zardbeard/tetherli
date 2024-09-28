@@ -20,6 +20,15 @@
         align-items: center;
         gap:$s1;
 
+        .username{
+            color:$purplePrimary;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 250px;
+            text-align: center;
+        }
+
         h2{
             color:$purplePrimary;
         }
@@ -32,7 +41,7 @@
 
             
 
-            .username{
+            .realName{
                 color:$grey;
                 font-weight: 700;;
             }

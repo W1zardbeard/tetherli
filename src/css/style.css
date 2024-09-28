@@ -305,8 +305,12 @@ button img {
   padding-top: 16px;
   padding-bottom: 16px;
   padding-right: 16px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
+}
+.navbar a {
+  display: flex;
 }
 .navbar .navLinksCont {
   display: flex;
@@ -452,6 +456,14 @@ button img {
   align-items: center;
   gap: 8px;
 }
+.userProfile .details .username {
+  color: #633CFF;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 250px;
+  text-align: center;
+}
 .userProfile .details h2 {
   color: #633CFF;
 }
@@ -461,7 +473,7 @@ button img {
   align-items: center;
   justify-content: center;
 }
-.userProfile .details div .username {
+.userProfile .details div .realName {
   color: #737373;
   font-weight: 700;
 }
@@ -676,6 +688,17 @@ button img {
   border-radius: 12px;
 }
 
+.finalPreview {
+  width: 350px;
+  background-color: #ffffff;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  border-radius: 24px;
+  box-shadow: 0px 0px 32px 0px rgba(0, 0, 0, 0.1);
+}
+
 body, .root {
   background-color: #fafafa;
 }
@@ -708,4 +731,9 @@ body, .root {
   height: 100vh;
   padding: 24px;
   gap: 24px;
+}
+
+.previewPage {
+  align-items: center;
+  gap: 80px;
 }/*# sourceMappingURL=style.css.map */
