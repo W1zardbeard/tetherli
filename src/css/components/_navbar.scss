@@ -5,9 +5,14 @@
     padding-top:$s2;
     padding-bottom:$s2;
     padding-right:$s2;
+    width:100%;
 
     display:flex;
     justify-content: space-between;
+
+    a{
+        display: flex;
+    }
     
     .navLinksCont{
         display: flex;

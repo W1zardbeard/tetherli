@@ -12,6 +12,7 @@ import MainTestPage from './pages/MainTestpage.jsx';
 import Editor from './pages/Editor.jsx';
 import ProfileDetails from './pages/ProfileDetails.jsx';
 import TestProfilePage from './pages/TestProfilePage.jsx';
+import Preview from './pages/Preview.jsx';
 
 
 const router = createBrowserRouter([
@@ -39,8 +40,13 @@ const router = createBrowserRouter([
     element: <ProfileDetails />
   },
   {
-    path: "/user/:username",
+    //see how youre using preview here!!!! use it for the actual render
+    path: "/user/test",
     element: <TestProfilePage />
+  },
+  {
+    path: "/preview/:username",
+    element: <Preview />
   }
 
 ]);
