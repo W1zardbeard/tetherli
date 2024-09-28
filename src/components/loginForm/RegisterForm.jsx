@@ -1,6 +1,11 @@
 import { useState } from "react";
 import TitleDesc from "./TitleDesc";
 import CTA from "../CTA";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function LoginForm(){
     const [email, setEmail] = useState("");
@@ -10,15 +15,14 @@ export default function LoginForm(){
 
 
 //Toggles 
+    //init navigation
+    const navigate = useNavigate();
 
     const [validEmail, setValidEmail] = useState(false);
-
     //Toggle for the match password visability
     const [matchPassword, setMatchPassword] = useState(false); 
-    
     //For disabled button on and off
     const [disabledBtn, setDisabledBtn] = useState(true);
-
     //For that password match on load fix
     const [confPassBool, setConfPassBool] = useState(false);
 
@@ -26,7 +30,6 @@ export default function LoginForm(){
     //Function so i can run 2 functions from the confirm password onchange event
     function confPassFirstTimeClick(event){
         handleChange(event);
-
         confPassBoolFunc();
     }
 
@@ -42,66 +45,85 @@ field has changed, then it can show */
 
 
 
-/*Handle change function */
+//===========================================================================================
+//=============================== Handle Change Function ====================================
+//===========================================================================================
     function handleChange(event){
         const {name, value} = event.target;
-        
         switch(name){
-
-            //check if field is email
+            // Check if field is email
             case "email":
                 setEmail(value);
-               
                 break;
-            
-            //check if field is password
+            // Check if field is password
             case "password":
-                    //if inputted value = the confirm password
-                    if(value === confirmPassword){
-                        //enable CTA
-                        setDisabledBtn(false);  
-                        //Turn off message
-                        if(confPassBool === true){
-                            setMatchPassword(false); 
-                        }
-
-                    //if passwords dont match    
-                    } else{
-                        console.log("Not same");
-                        //disable button
-                        setDisabledBtn(true);
-                        //turn on message
-                        if(confPassBool === true){
-                            setMatchPassword(true); 
-                        }
-                        
+                // If inputted value matches the confirm password
+                if(value === confirmPassword){
+                    // Enable CTA button
+                    setDisabledBtn(false);  
+                    // Turn off mismatch message
+                    if(confPassBool === true){
+                        setMatchPassword(false); 
                     }
+                // If passwords don't match    
+                } else{
+                    console.log("Not same");
+                    // Disable CTA button
+                    setDisabledBtn(true);
+                    // Turn on mismatch message
+                    if(confPassBool === true){
+                        setMatchPassword(true); 
+                    } 
+                }
                 setPassword(value);
                 break;
-
-            //check if field is confirm password
+            // Check if field is confirm password
             case "confirmPassword":
-                    //if inputted value = the  password
-                    if(password === value){
-                        //enable CTA
-                        setDisabledBtn(false);
-                        //turn off message
-                        setMatchPassword(false); 
-                    //if passwords dont match
-                    } else{
-                        console.log("Not same");
-                        //Disable button
-                        setDisabledBtn(true);  
-                        //Show message
-                        setMatchPassword(true); 
-                    }
+                // If inputted value matches the password
+                if(password === value){
+                    // Enable CTA button
+                    setDisabledBtn(false);
+                    // Turn off mismatch message
+                    setMatchPassword(false); 
+                // If passwords don't match
+                } else{
+                    console.log("Not same");
+                    // Disable CTA button
+                    setDisabledBtn(true);  
+                    // Show mismatch message
+                    setMatchPassword(true); 
+                }
                 setConfirmPassword(value);
                 break;
         }
-
-        
     }
 
+
+    // Function to handle the registration process
+    const handleRegister = async (e) => {
+        // Prevent the default form submission behavior
+        e.preventDefault();
+        try {
+            // Make a POST request to the registration endpoint with email and password
+            const response = await axios.post('/api/register', {
+                email,
+                password
+            });
+            // If the response contains a token
+            if (response.data.token) {
+                // Store the token in localStorage
+                localStorage.setItem('token', response.data.token);
+                // Redirect the user to the editor page
+                navigate('/editor');
+            }
+        } catch (err) {
+            // Log any errors that occur during the registration process
+            toast.error(err.response.data, {
+                autoClose: 2000,
+                position: "top-center",
+            });
+        }
+    }
 
 
 
@@ -116,7 +138,7 @@ field has changed, then it can show */
             />
 
         {/*Form */}
-        <form action="/api/register" method="POST">
+        <form name="registerForm" onSubmit={handleRegister}>
 
             {/*Email field */}
             <div>            
