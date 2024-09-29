@@ -57,7 +57,10 @@ export default function DetailsEdit(props){
             //disable spaces in username
             if(value.includes(" ")){
                 //alert user
-                alert("Username cannot contain spaces");
+                toast.error("Username cannot contain spaces", {
+                    autoClose: 2000,
+                    position: "top-center",
+                });
                 return;
             }
 

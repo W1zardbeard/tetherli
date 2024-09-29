@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function LoginForm(){
+export default function LoginForm(props){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -114,9 +114,10 @@ field has changed, then it can show */
                 // Store the token in localStorage
                 localStorage.setItem('token', response.data.token);
                 // Redirect the user to the editor page
-                navigate('/editor');
+                props.setPageFlow("username");
             }
         } catch (err) {
+            console.log(err);
             // Log any errors that occur during the registration process
             toast.error(err.response.data, {
                 autoClose: 2000,

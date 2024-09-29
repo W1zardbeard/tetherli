@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
 
-export default function UsernameForm(){
+export default function UsernameForm(props){
 
     const [username, setUsername] = useState("");
     //For disabled button on and off
@@ -13,6 +13,15 @@ export default function UsernameForm(){
 
     function handleChange(event){
         const {name, value} = event.target;
+
+        if(value.includes(" ")){
+            //alert user
+            toast.error("Username cannot contain spaces", {
+                autoClose: 2000,
+                position: "top-center",
+            });
+            return;
+        }
         setUsername(value);
         if(value.length > 0){
             setDisabledBtn(false);
@@ -30,12 +39,10 @@ export default function UsernameForm(){
                 headers: { Authorization: `Bearer ${token}` }
             })
             .then((res) => {
-                toast.success("Username updated successfully",{
-                    autoClose: 2000,
-                    position: "top-center",
-                });
+                props.setPageFlow("names");
             })
             .catch((err) => {
+                console.log(err);
                 toast.error(err.response.data, {
                     autoClose: 2000,
                     position: "top-center",
@@ -43,11 +50,12 @@ export default function UsernameForm(){
             })
     }
 
+
     return(
         <div className='loginForm'>
             <TitleDesc 
-                title="Create account"
-                subText="Let’s get you started sharing your links!"
+                title="Add username"
+                subText="This is what people will use to find you"
             />
             <form name="registerForm" onSubmit={handleUsername}>
             <div>

@@ -268,8 +268,46 @@ app.post("/api/addUsername", authenticateToken, async (req, res) => {
   const userId = req.user.userCreds.userId;
   // Extract username from the request body
   const username = req.body.username;
-  res.status(200).send("Username updated successfully");
+  try{
+    // Check if the username already exists in the database
+    const checkResult = await db.query("SELECT * FROM users WHERE username = $1", [username]);
+    // If username already exists, send a response indicating so
+    if (checkResult.rows.length > 0) {
+      res.status(400).send("Username already exists. Try another username.");
+    } else {
+      // Update the user's username in the database
+      await db.query("UPDATE users SET username = $1 WHERE id = $2", [username, userId]);
+      // Send a success response
+      res.status(200).send("Username added successfully");
+    }
+  }catch(err){
+    console.log(err);
+    res.status(500).send("Server error");
+  }
 });
+
+
+
+
+// ==============================
+// Add names Endpoint
+// ==============================
+app.post("/api/addNames", authenticateToken, async (req, res) => {
+  // Extract user ID from the authenticated user credentials
+  const userId = req.user.userCreds.userId;
+  // Extract first name and last name from the request body
+  const { first_name, last_name } = req.body;
+  try {
+    // Update the user's first name and last name in the database
+    await db.query("UPDATE users SET first_name = $1, last_name = $2 WHERE id = $3", [first_name, last_name, userId]);
+    // Send a success response
+    res.status(200).send("Names added successfully");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error");
+  }
+});
+
 
 
 
