@@ -45,7 +45,7 @@ export default function NamesForm(props){
                     headers: { Authorization: `Bearer ${token}` }
                 })
                 .then((res) => {
-                    props.setPageFlow("username");
+                    props.setPageFlow("avatar");
                 })
                 .catch((err) => {
                     console.log(err);

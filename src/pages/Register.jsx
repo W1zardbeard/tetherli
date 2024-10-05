@@ -2,6 +2,8 @@ import Logo from "../components/Logo.jsx";
 import RegisterForm from "../components/loginForm/RegisterForm.jsx";
 import UsernameForm from "../components/loginForm/UsernameForm.jsx";
 import NamesForm from "../components/loginForm/NamesForm.jsx";
+import AvatarForm from "../components/loginForm/avatarForm.jsx";
+import Finished from "../components/loginForm/Finished.jsx";
 import{ useState } from "react";
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -57,6 +59,32 @@ export default function Register(){
                     <NamesForm 
                         setPageFlow={changePageFlow}
                     />
+                    <ToastContainer />
+                </div>
+            )
+            break;
+        case "avatar":
+            return(
+                <div className="loginPage">
+                    <Logo 
+                        large={true}
+                        width={"180"}
+                    />
+                    <AvatarForm 
+                        setPageFlow={changePageFlow}
+                    />
+                    <ToastContainer />
+                </div>
+            )
+            break;
+        case "finished":
+            return(
+                <div className="loginPage">
+                    <Logo 
+                        large={true}
+                        width={"180"}
+                    />
+                    <Finished />
                     <ToastContainer />
                 </div>
             )
