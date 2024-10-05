@@ -688,6 +688,11 @@ button img {
   border-radius: 12px;
 }
 
+.fixedAvatar {
+  display: flex;
+  justify-content: center;
+}
+
 .finalPreview {
   width: 350px;
   background-color: #ffffff;

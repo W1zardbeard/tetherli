@@ -1,5 +1,5 @@
 import UploadAvatar from "./UploadAvatar"
-import AvatarUpload from "./UploadAvatar"
+
 
 
 export default function AvatarEdit(props){

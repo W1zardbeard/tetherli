@@ -9,6 +9,8 @@ import multer from "multer";
 import {join, dirname} from "path";
 import { fileURLToPath } from "url";
 
+import {router as authRouter} from "./routes/auth.js";
+
 // Define __dirname
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -39,6 +41,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+
+
+//router setup
+app.use("/auth", authRouter);
 
 
 
@@ -206,14 +212,16 @@ app.post("/api/register", async (req, res) => {
   // Extract email and password from the request body
   const email = req.body.email;
   const password = req.body.password;
+
   try {
     // Check if the email already exists in the database
     const checkResult = await db.query("SELECT * FROM users WHERE email = $1", [
       email,
     ]);
+
     // If email already exists, send a response indicating so
     if (checkResult.rows.length > 0) {
-      res.send("Email already exists. Try logging in.");
+      res.status(400).send("Email already exists. Try logging in.");
     } else {
       // Hash the password using bcrypt
       bcrypt.hash(password, saltRounds, async (err, hash) => {
@@ -221,22 +229,89 @@ app.post("/api/register", async (req, res) => {
           // Log any error that occurs during hashing
           console.log("Error with hashing: ", err);
         } else {
-          // Insert the new user into the database with the hashed password
-          const result = await db.query(
-            "INSERT INTO users (email, password) VALUES ($1, $2)",
-            [email, hash]
-          );
-          console.log(result);
-          // Redirect to the editor page after successful registration
-          res.redirect("/editor");
+          try {
+            const result = await db.query(
+              "INSERT INTO users (email, password) VALUES ($1, $2) RETURNING id",
+              [email, hash]
+            );
+
+            const userCreds = { email, userId: result.rows[0].id };
+            // If successful, send a response indicating successful registration
+            const accessToken = jwt.sign(
+              { userCreds },
+              process.env.ACCESS_TOKEN_SECRET,
+              { expiresIn: '1h' }
+            );
+            res.status(200).json({
+              message: "Login successful",
+              token: accessToken
+            });
+          } catch (err) {
+            console.log(err);
+            res.status(500).send("Server error");
+          }
         }
       });
     }
   } catch (err) {
-    // Log any error that occurs during the database query
     console.log(err);
+    res.status(500).send("Server error");
   }
 });
+
+
+// ==============================
+// Add username Endpoint
+// ==============================
+app.post("/api/addUsername", authenticateToken, async (req, res) => {
+  // Extract user ID from the authenticated user credentials
+  const userId = req.user.userCreds.userId;
+  // Extract username from the request body
+  const username = req.body.username;
+  try{
+    // Check if the username already exists in the database
+    const checkResult = await db.query("SELECT * FROM users WHERE username = $1", [username]);
+    // If username already exists, send a response indicating so
+    if (checkResult.rows.length > 0) {
+      res.status(400).send("Username already exists. Try another username.");
+    } else {
+      // Update the user's username in the database
+      await db.query("UPDATE users SET username = $1 WHERE id = $2", [username, userId]);
+      // Send a success response
+      res.status(200).send("Username added successfully");
+    }
+  }catch(err){
+    console.log(err);
+    res.status(500).send("Server error");
+  }
+});
+
+
+
+
+// ==============================
+// Add names Endpoint
+// ==============================
+app.post("/api/addNames", authenticateToken, async (req, res) => {
+  // Extract user ID from the authenticated user credentials
+  const userId = req.user.userCreds.userId;
+  // Extract first name and last name from the request body
+  const { first_name, last_name } = req.body;
+  try {
+    // Update the user's first name and last name in the database
+    await db.query("UPDATE users SET first_name = $1, last_name = $2 WHERE id = $3", [first_name, last_name, userId]);
+    // Send a success response
+    res.status(200).send("Names added successfully");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Server error");
+  }
+});
+
+
+
+
+
 
 
 // ==============================
