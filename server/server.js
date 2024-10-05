@@ -489,11 +489,20 @@ app.post("/api/uploadAvatar", authenticateToken, upload.single("file"), async (r
     return res.status(400).send("File size too large");
   }
 
-  // Send a success response indicating the file was received
-  res.send("File received");
+  
 
   // Update the user's avatar in the database with the file path
-  updateAvatar(userId, req.file.path);
+  try{
+    updateAvatar(userId, req.file.path);
+    // Send a success response
+    res.status(200).send("Avatar uploaded successfully");
+  }catch(err){
+    // Log any error that occurs during the update operation
+    console.error("Error updating avatar: ", err);
+    // Send a 500 Internal Server Error status if an error occurs
+    res.status(500).send("Server error, please try again");
+  }
+  
 });
 
 
