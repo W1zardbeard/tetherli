@@ -37,7 +37,7 @@ export default function LoginForm(){
                 localStorage.setItem('token', response.data.token);
 
                 // Redirect the user to the editor page
-                navigate('/editor');
+                navigate('/admin');
             }
         } catch (err) {
             console.error('Login error:', err);

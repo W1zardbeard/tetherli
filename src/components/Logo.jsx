@@ -20,7 +20,7 @@ export default function Logo(props){
             <img 
                 style={mobile ? smallWidth : logoWidth}
                 className="logo" 
-                src={mobile ? "src/assets/logo-devlinks-small.svg" : "src/assets/logo-devlinks-large.svg"}
+                src={mobile ? "../src/assets/logo-devlinks-small.svg" : "../src/assets/logo-devlinks-large.svg"}
             />
         )
 
@@ -30,7 +30,7 @@ export default function Logo(props){
             <img 
                 style={logoWidth}
                 className="logo loginLogo" 
-                src={props.large ? "src/assets/logo-devlinks-large.svg" : "src/assets/logo-devlinks-small.svg"}
+                src={props.large ? "../src/assets/logo-devlinks-large.svg" : "../src/assets/logo-devlinks-small.svg"}
             />
         )
     }

@@ -52,8 +52,8 @@ export default function Navbar(props){
                     onClick={handleClick}
                     active={linksActiveLink}
                     text={"Links"}
-                    imgSrc={"src/assets/icon-links-header.svg"}
-                    linkTo={"Editor"}
+                    imgSrc={"../src/assets/icon-links-header.svg"}
+                    linkTo={"../admin"}
                     
                 />
 
@@ -61,8 +61,8 @@ export default function Navbar(props){
                     onClick={handleClick}
                     active={profileActiveLink}
                     text={"Profile Details"}
-                    imgSrc={"src/assets/icon-profile-details-header.svg"}
-                    linkTo={"profileDetails"}
+                    imgSrc={"../src/assets/icon-profile-details-header.svg"}
+                    linkTo={"admin/profileDetails"}
                 />
             </div>
             <CTA
