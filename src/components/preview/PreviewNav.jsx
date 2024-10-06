@@ -19,7 +19,7 @@ export default function PreviewNav() {
             text={"Back to Editor"}
             style={"secondary"}
             icon={false}
-            clickHandler={() =>  navigate("/editor")}
+            clickHandler={() =>  navigate("/admin")}
         />
 
         <CTA

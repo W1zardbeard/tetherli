@@ -10,7 +10,7 @@ export default function Finished(props){
 
 
     function handleFinish(){
-        navigate("/editor");
+        navigate("/admin");
     }
 
     return(

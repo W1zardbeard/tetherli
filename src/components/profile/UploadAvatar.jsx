@@ -7,7 +7,7 @@ export default function UploadAvatar(props){
 
     const avatarPath = props.avatar ? encodeURIComponent(props.avatar.trim()) : '';
     const style = {
-        backgroundImage: `url(server/${avatarPath})`,
+        backgroundImage: `url(../server/${avatarPath})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
     }
@@ -79,7 +79,7 @@ export default function UploadAvatar(props){
             <div className='uploadAvatar uploadedAvatar'>
                 <label htmlFor="file" style={style}>
                     <span>
-                        <img src="src/assets/icon-upload-image.svg" alt="upload" />
+                        <img src="../src/assets/icon-upload-image.svg" alt="upload" />
                         Upload new image
                     </span>
                 </label>
@@ -89,7 +89,7 @@ export default function UploadAvatar(props){
             : 
             <div className='uploadAvatar'>
                 <label htmlFor="file">
-                    <img src="src/assets/icon-upload-image.svg" alt="upload" />
+                    <img src="../src/assets/icon-upload-image.svg" alt="upload" />
                     Upload image
                 </label>
                 <input  type="file" id="file" className='file'  accept="image/*" onChange={handleFileChange}/>
