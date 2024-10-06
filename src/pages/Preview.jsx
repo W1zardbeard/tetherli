@@ -7,6 +7,7 @@ import FinalLinkPreview from '../components/preview/FinalLinkPreview';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CopyLink from "../components/preview/CopyLink"
 
 
 
@@ -106,6 +107,10 @@ export default function Preview() {
         <FinalLinkPreview 
             userDetails={userData}
             links={userLinks}
+        />
+
+        <CopyLink 
+            username={username}
         />
     </div>
   );
