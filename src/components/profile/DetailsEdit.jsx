@@ -1,6 +1,8 @@
 import {useState, useEffect} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import * as Switch from "@radix-ui/react-switch";
+
 
 export default function DetailsEdit(props){
 
@@ -11,6 +13,8 @@ export default function DetailsEdit(props){
     const [lname, setLname] = useState(props.userDetails.last_name || "");
     const [email, setEmail] = useState(props.userDetails.email || "");
     const [username, setUsername] = useState(props.userDetails.username || "");
+
+    const [showEmail, setShowEmail] = useState(false);
 
     //useEffect to update the state variables when the props change (first name)
     useEffect(() => {
@@ -71,6 +75,42 @@ export default function DetailsEdit(props){
         }
     }	
 
+
+
+
+    //Think we're gonna have to do something with use effect here as it is not updating the state of the switch
+    //its basically happening one step behind sigh
+
+    function handleSwitch(event){
+       
+        const isChecked = event.target.getAttribute('data-state');
+        console.log(isChecked);
+        if(isChecked === "unchecked"){
+            setShowEmail(false);
+        }
+        else if(isChecked === "checked"){
+            setShowEmail(true);
+        }
+        
+    }
+
+    function tickleTheEmail(){
+       if (showEmail === false){
+           setShowEmail(true);
+       }
+         else{
+              setShowEmail(false);
+         }
+    }
+
+    function logTheEmail(){
+        console.log(showEmail);
+    }
+
+
+
+    
+
     return(
         <div className="profileEditSection editDetails">
             <div className="inputRow">
@@ -118,7 +158,15 @@ export default function DetailsEdit(props){
                 />
             </div>
 
-            
+            <div className="inputRow">
+                <p>Show email on profile</p>
+                <Switch.Root onClick={handleSwitch} className="SwitchRoot">
+				    <Switch.Thumb className="SwitchThumb" />
+			    </Switch.Root>
+            </div>
+
+            <button onClick={tickleTheEmail} > change email state </button>
+            <button onClick={logTheEmail} > log email state </button>
             
         </div>
     )
