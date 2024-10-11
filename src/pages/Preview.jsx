@@ -7,6 +7,7 @@ import FinalLinkPreview from '../components/preview/FinalLinkPreview';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import CopyLink from "../components/preview/CopyLink"
 
 
 
@@ -90,6 +91,17 @@ export default function Preview() {
     }, []);
 
 
+    //function copy to clipboard
+    function copyToClipboard() {
+        navigator.clipboard.writeText(`tetherli/${username}`);
+        console.log("Copied to clipboard");
+        toast.success("Link copied to clipboard", {
+            autoClose: 2000,
+            position: "top-center",
+        });
+    }
+
+  
 
 
 
@@ -107,6 +119,12 @@ export default function Preview() {
             userDetails={userData}
             links={userLinks}
         />
+
+        <CopyLink 
+            username={username}
+            clickHandler={copyToClipboard}
+        />
+        <ToastContainer />
     </div>
   );
 }
