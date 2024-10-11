@@ -91,6 +91,17 @@ export default function Preview() {
     }, []);
 
 
+    //function copy to clipboard
+    function copyToClipboard() {
+        navigator.clipboard.writeText(`tetherli/${username}`);
+        console.log("Copied to clipboard");
+        toast.success("Link copied to clipboard", {
+            autoClose: 2000,
+            position: "top-center",
+        });
+    }
+
+  
 
 
 
@@ -111,7 +122,9 @@ export default function Preview() {
 
         <CopyLink 
             username={username}
+            clickHandler={copyToClipboard}
         />
+        <ToastContainer />
     </div>
   );
 }
