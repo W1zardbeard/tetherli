@@ -354,7 +354,7 @@ app.get("/api/userInfo", authenticateToken, async (req, res) => {
 
     // Query the database to get user information based on user ID
     const getInfo = await db.query(
-      "SELECT email, first_name, last_name, avatar, username, id FROM users WHERE id = $1",
+      "SELECT email, first_name, last_name, avatar, username, id, show_email, show_name FROM users WHERE id = $1",
       [userId]
     );
 
