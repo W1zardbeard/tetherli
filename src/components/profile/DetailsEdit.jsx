@@ -77,10 +77,10 @@ export default function DetailsEdit(props){
         const switchElement = document.getElementById("showName"); 
         
         if (props.userDetails.show_name !== undefined) {
-            setShowEmail(props.userDetails.show_name);
+            setShowName(props.userDetails.show_name);
         }
 
-        //setting the switch to checked or unchecked based on the value of show_email
+        //setting the switch to checked or unchecked based on the value of show_name
         if(props.userDetails.show_name === true){
             //set the switch to checked
             switchElement.setAttribute('data-state', 'checked');
@@ -133,25 +133,10 @@ export default function DetailsEdit(props){
             setUsername(value);
             props.updateDetails(event);
         }
+    
     }	
 
-    //useEffect to update the switch state when the showEmail state changes
-    useEffect(() => {
-        //get the switch element by its id
-        const switchElement = document.getElementById("showEmail");
-        if(showEmail === true){
-        //set the switch to checked
-        switchElement.setAttribute('data-state', 'checked');
-        //also set the child span to checked
-        switchElement.children[0].setAttribute('data-state', 'checked');
-        }
-        else if(showEmail === false){
-            //set the switch to checked
-            switchElement.setAttribute('data-state', 'unchecked');
-            //also set the child span to checked
-            switchElement.children[0].setAttribute('data-state', 'unchecked');
-        }
-    }, [showEmail]);
+  
 
 
     //function to handle the switch for showing email
@@ -179,11 +164,34 @@ export default function DetailsEdit(props){
         const isChecked = switchElement.getAttribute('data-state');
         if(isChecked === "unchecked"){
             setShowName(true);
+            
         }
         else if(isChecked === "checked"){
             setShowName(false);
+          
         } 
     }
+
+
+      //useEffect to update the switch state when the showEmail state changes
+      useEffect(() => {
+        //get the switch element by its id
+        const switchElement = document.getElementById("showEmail");
+        if(showEmail === true){
+        //set the switch to checked
+        switchElement.setAttribute('data-state', 'checked');
+        //also set the child span to checked
+        switchElement.children[0].setAttribute('data-state', 'checked');
+        props.updateShowEmail(showEmail);
+        }
+        else if(showEmail === false){
+            //set the switch to checked
+            switchElement.setAttribute('data-state', 'unchecked');
+            //also set the child span to checked
+            switchElement.children[0].setAttribute('data-state', 'unchecked');
+            props.updateShowEmail(showEmail);
+        }
+    }, [showEmail]);
 
 
      //useEffect to update the switch state when the showName state changes
@@ -195,20 +203,16 @@ export default function DetailsEdit(props){
         switchElement.setAttribute('data-state', 'checked');
         //also set the child span to checked
         switchElement.children[0].setAttribute('data-state', 'checked');
+        props.updateShowName(showName);
         }
         else if(showName === false){
             //set the switch to checked
             switchElement.setAttribute('data-state', 'unchecked');
             //also set the child span to checked
             switchElement.children[0].setAttribute('data-state', 'unchecked');
+            props.updateShowName(showName);
         }
     }, [showName]);
-
-    //function to check the email
-    function logTheEmail(){
-        console.log(showName);
-        console.log(showEmail);
-    }
 
 
 
@@ -251,7 +255,13 @@ export default function DetailsEdit(props){
             </div>
             <div className="inputRow">
                 <p>Show name on profile</p>
-                <Switch.Root onClick={handleNameSwitch} className="SwitchRoot" id="showName">
+                <Switch.Root 
+                    name="showName"
+                    onClick={handleNameSwitch} 
+                    className="SwitchRoot" 
+                    id="showName"
+                    checked={showName}
+                >
 				    <Switch.Thumb className="SwitchThumb" />
 			    </Switch.Root>
             </div>
@@ -269,7 +279,13 @@ export default function DetailsEdit(props){
 
             <div className="inputRow">
                 <p>Show email on profile</p>
-                <Switch.Root onClick={handleEmailSwitch} className="SwitchRoot" id="showEmail">
+                <Switch.Root 
+                    name="showEmail" 
+                    onClick={handleEmailSwitch} 
+                    className="SwitchRoot" 
+                    id="showEmail"
+                    checked={showEmail}
+                >
 				    <Switch.Thumb className="SwitchThumb" />
 			    </Switch.Root>
             </div>

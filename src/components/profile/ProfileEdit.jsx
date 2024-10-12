@@ -26,6 +26,8 @@ export default function ProfileEdit(props){
             <DetailsEdit 
                 userDetails={props.userDetails}
                 updateDetails={props.updateDetails}
+                updateShowName={props.updateShowName}
+                updateShowEmail={props.updateShowEmail}
             />
 
 

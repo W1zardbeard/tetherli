@@ -543,16 +543,16 @@ app.post("/api/updateUserInfo", authenticateToken, async (req, res) => {
   // Log the user ID for debugging purposes
   console.log(userId); 
   // Extract user details from the request body
-  const { email, first_name, last_name, username } = req.body;
+  const { email, first_name, last_name, username, show_name, show_email } = req.body;
   // SQL query to update user details in the database
   const query = `
   UPDATE users
-  SET email = $1, first_name = $2, last_name = $3, username = $4
+  SET email = $1, first_name = $2, last_name = $3, username = $4, show_name = $6, show_email = $7
   WHERE id = $5
   `;
   try {
     // Execute the query with the provided user details and user ID
-    await db.query(query, [email, first_name, last_name, username, userId]);
+    await db.query(query, [email, first_name, last_name, username, userId, show_name, show_email]);
     // Send a success response indicating the user details were updated
     res.status(200).send("User details updated");
   } catch (err) {
