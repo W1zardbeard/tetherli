@@ -156,22 +156,14 @@ function updateDetails(event){
 // Function to update user details based on input changes
 // ***********************
 function updateShowEmail(value) {
-    console.log("hello i am being called email");
-    // Destructure name and value from the event target
-    console.log("Email is" , value);
         setUserData({ ...userData, show_email: value });
-   
 }
 
 // ***********************
 // Function to update user details based on input changes
 // ***********************
 function updateShowName(value) {
-    console.log("hello i am being called name");
-    // Destructure name and value from the event target
-    console.log("name is" , value);
-        setUserData({ ...userData, show_name: value });
-   
+        setUserData({ ...userData, show_name: value });  
 }
 
 
@@ -182,7 +174,6 @@ function saveDetails(){
     // Retrieve token from local storage
     const token = localStorage.getItem("token");
 
-    console.log(userData);
 
     // Send a POST request to update user information
     axios.post("/api/updateUserInfo", userData, {
