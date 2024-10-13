@@ -4,7 +4,8 @@ import { useState } from "react";
 import CTA from "../CTA"
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function LoginForm(){
     const [email, setEmail] = useState("");
@@ -35,13 +36,19 @@ export default function LoginForm(){
             if (response.data.token) {
                 // Store the token (in localStorage or sessionStorage)
                 localStorage.setItem('token', response.data.token);
+                toast.success(response.data, {
+                    autoClose: 2000,
+                    position: "top-center",
+                });
 
                 // Redirect the user to the editor page
                 navigate('/admin');
             }
         } catch (err) {
-            console.error('Login error:', err);
-            setError('Invalid email or password');
+            toast.error(err.response.data, {
+                autoClose: 2000,
+                position: "top-center",
+            });
         }
     };
 
