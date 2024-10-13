@@ -152,6 +152,20 @@ function updateDetails(event){
     }
 }
 
+// ***********************
+// Function to update user details based on input changes
+// ***********************
+function updateShowEmail(value) {
+        setUserData({ ...userData, show_email: value });
+}
+
+// ***********************
+// Function to update user details based on input changes
+// ***********************
+function updateShowName(value) {
+        setUserData({ ...userData, show_name: value });  
+}
+
 
 // ***********************
 // Function to save user details
@@ -159,6 +173,7 @@ function updateDetails(event){
 function saveDetails(){
     // Retrieve token from local storage
     const token = localStorage.getItem("token");
+
 
     // Send a POST request to update user information
     axios.post("/api/updateUserInfo", userData, {
@@ -203,6 +218,8 @@ function saveDetails(){
                     updateAvatar={updateAvatar}
                     saveDetails={saveDetails}
                     updateDetails={updateDetails}
+                    updateShowName={updateShowName}
+                    updateShowEmail={updateShowEmail}
                 />
               
             </div>
