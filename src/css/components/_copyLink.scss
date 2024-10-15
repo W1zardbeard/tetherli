@@ -1,4 +1,4 @@
-.copyLink{
+.navCard{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -6,7 +6,7 @@
     padding:$s2;
     background-color: $white;
     border-radius: $r2;
-    
+    color:$darkGrey;
     
   
     &:hover{
@@ -17,4 +17,8 @@
     -moz-box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.1);
     box-shadow: 0px 0px 32px 0px rgba(0,0,0,0.1);
     }
+}
+
+.reducedGapNavCard{
+    gap:$s1;
 }

@@ -594,8 +594,26 @@ app.get("/api/:username", async (req, res) => {
     const userDetails = await db.query(query, [username]);
     // If no user details are found, send a response indicating so
     if (userDetails.rows.length === 0) {
-      return res.send("No user found");
+      return res.status(404).send("No user found");
     }
+      try{
+        // Query the database to get links associated with the user ID
+        const getLinks = await db.query("SELECT * FROM links WHERE user_id = $1", [
+          userDetails.rows[0].id,
+        ]);
+    
+        // If no links are found, send an empty array
+        if (getLinks.rows.length === 0) {
+          return res.send([]);
+        }
+        // Send the retrieved links as the response
+        userDetails.rows[0].links = getLinks.rows;
+      }catch(err){
+        // Log any error that occurs during the database query
+        console.log(err);
+        // Send a 500 Internal Server Error status if an error occurs
+        res.status(500).send("Server error");
+      }
     // Send the retrieved user details as the response
     res.json(userDetails.rows[0]);
   } catch (err) {

@@ -7,7 +7,7 @@ import FinalLinkPreview from '../components/preview/FinalLinkPreview';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import CopyLink from "../components/preview/CopyLink"
+import NavCard from "../components/preview/NavCard"
 
 
 
@@ -120,9 +120,10 @@ export default function Preview() {
             links={userLinks}
         />
 
-        <CopyLink 
+        <NavCard 
             username={username}
             clickHandler={copyToClipboard}
+            copyLink={true}
         />
         <ToastContainer />
     </div>
