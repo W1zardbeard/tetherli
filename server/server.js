@@ -123,7 +123,7 @@ app.post("/api/verify-token", (req, res) => {
     if (err) {
       // Log the error and send a 403 Forbidden status if token verification fails
       console.log("Error verifying token: ", err);
-      return res.sendStatus(403);
+      return res.status(403).send("Please sign in to continue");
     }
     // Send a 200 OK status if token verification is successful
     res.sendStatus(200);
@@ -155,7 +155,7 @@ app.post("/api/login", async (req, res) => {
         const accessToken = jwt.sign(
           { userCreds },
           process.env.ACCESS_TOKEN_SECRET,
-          { expiresIn: '1h' }
+          { expiresIn: '12h' }
         );
         res.status(200).json({
           message: "Login successful",
@@ -192,7 +192,7 @@ function authenticateToken(req, res, next) {
   // Verify the token using the secret key
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, userCreds) => {
     // If token verification fails, send a 403 Forbidden status
-    if (err) return res.sendStatus(403);
+    if (err) return res.status(403).send("Please sign in to continue");
     // Attach the user credentials to the request object
     req.user = userCreds;
     // Proceed to the next middleware or route handler
@@ -240,7 +240,7 @@ app.post("/api/register", async (req, res) => {
             const accessToken = jwt.sign(
               { userCreds },
               process.env.ACCESS_TOKEN_SECRET,
-              { expiresIn: '1h' }
+              { expiresIn: '12h' }
             );
             res.status(200).json({
               message: "Login successful",

@@ -55,6 +55,44 @@ export default function ProfileDetails(){
                 navigate("/");
             }
         })
+        
+        // ***********************
+        // 2. Fetch user links and data
+        // ***********************
+        .then((res) => {
+            // Fetch user links from the API
+            axios.get("/api/userLinks", {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then((res) => {
+                // Store the response data in the userLinks state
+                setUserLinks(res.data);
+            })
+            .catch((err) => {
+                // Log any errors and display a toast notification
+                toast.error("Error fetching links", {
+                    autoClose: 2000,
+                    position: "top-center",
+                });
+            });
+
+            // Fetch user data from the API
+            axios.get("/api/userInfo", { 
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then((res) => {
+                // Store the response data in the userData state
+                setUserData(res.data);
+            })
+            .catch((err) => {
+                // Log any errors and display a toast notification
+                toast.error("Error fetching user data", {
+                    autoClose: 2000,
+                    position: "top-center",
+                });
+            });
+
+        })
         .catch((err) => {
             // Log any errors and navigate to the login page
             console.error("Token verification failed", err);
@@ -64,46 +102,6 @@ export default function ProfileDetails(){
 
 
 
-
-// ***********************
-// 2. Fetch user links and data
-// ***********************
-useEffect(() => {
-    // Retrieve token from local storage
-    const token = localStorage.getItem("token");
-
-    // Fetch user links from the API
-    axios.get("/api/userLinks", {
-        headers: { Authorization: `Bearer ${token}` }
-    })
-    .then((res) => {
-        // Store the response data in the userLinks state
-        setUserLinks(res.data);
-    })
-    .catch((err) => {
-        // Log any errors and display a toast notification
-        toast.error("Error fetching links", {
-            autoClose: 2000,
-            position: "top-center",
-        });
-    });
-
-    // Fetch user data from the API
-    axios.get("/api/userInfo", { 
-        headers: { Authorization: `Bearer ${token}` }
-    })
-    .then((res) => {
-        // Store the response data in the userData state
-        setUserData(res.data);
-    })
-    .catch((err) => {
-        // Log any errors and display a toast notification
-        toast.error("Error fetching user data", {
-            autoClose: 2000,
-            position: "top-center",
-        });
-    });
-}, []);
 
 
 

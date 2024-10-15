@@ -16,6 +16,9 @@ import Preview from './pages/Preview.jsx';
 import SharePage from './pages/SharePage.jsx';
 
 
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -53,8 +56,13 @@ const router = createBrowserRouter([
 ]);
 
 
+
+
 ReactDOM.createRoot(document.getElementById('root')).render(
- 
+    <>
     <RouterProvider router={router} />
+  
+    </>
+    
 
 )

@@ -61,9 +61,43 @@ export default function Editor(){
                 navigate("/");
             }
         })
+
+        // ***********************
+        // 2. Fetch user links and data
+        // ***********************
+        .then(() => { 
+            // Fetch user links from the backend
+            axios.get("/api/userLinks", {
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then((res) => {
+                // Store the retrieved links in the state
+                setUserLinks(res.data);
+            })
+            .catch((err) => {
+                toast.error("Error fetching links", {
+                    autoClose: 2000,
+                    position: "top-center",
+                });
+            });
+
+            // Fetch user info from the backend
+            axios.get("/api/userInfo", { 
+                headers: { Authorization: `Bearer ${token}` }
+            })
+            .then((res) => {
+                // Store the retrieved user info in the state
+                setUserData(res.data);
+            })
+            .catch((err) => {
+            toast.error("Error fetching user info", {
+                    autoClose: 2000,
+                    position: "top-center",
+                });
+            });
+        })
         .catch((err) => {
             // Log any errors and navigate to the login page
-            console.error("Token verification failed", err);
             navigate("/");
         });
     }, [navigate]);
@@ -71,43 +105,7 @@ export default function Editor(){
 
 
 
-    // ============================
-    // Fetch user links and user info from the API
-    // ============================
-    useEffect(() => {
-        // Retrieve the token from local storage
-        const token = localStorage.getItem("token");
 
-        // Fetch user links from the backend
-        axios.get("/api/userLinks", {
-            headers: { Authorization: `Bearer ${token}` }
-        })
-        .then((res) => {
-            // Store the retrieved links in the state
-            setUserLinks(res.data);
-        })
-        .catch((err) => {
-            toast.error("Error fetching links", {
-                autoClose: 2000,
-                position: "top-center",
-            });
-        });
-
-        // Fetch user info from the backend
-        axios.get("/api/userInfo", { 
-            headers: { Authorization: `Bearer ${token}` }
-        })
-        .then((res) => {
-            // Store the retrieved user info in the state
-            setUserData(res.data);
-        })
-        .catch((err) => {
-           toast.error("Error fetching user info", {
-                autoClose: 2000,
-                position: "top-center",
-            });
-        });
-    }, []);
 
 
 
@@ -173,7 +171,7 @@ export default function Editor(){
         .then((res) => {
             // Handle the response here
             // If the response status is 200, show a success message
-            console.log(res.status);
+ 
             toast.success("Link(s) saved successfully", {
                 autoClose: 2000,
                 position: "top-center",
@@ -181,7 +179,7 @@ export default function Editor(){
         })
         .catch((err) => {
             // Handle any errors here
-            console.error("Error saving links", err);
+        
             toast.error("Error saving links", {
                 autoClose: 2000,
                 position: "top-center",
