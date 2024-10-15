@@ -7,7 +7,7 @@ export default function LinkListMockup(props){
    const linkList = props.links;
    var totalLinks = 5 ;
 
-   console.log(props)
+
 
     
     return(

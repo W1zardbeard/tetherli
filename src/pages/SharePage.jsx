@@ -21,19 +21,19 @@ export default function SharePage(){
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Retrieve the token from local storage
-        const token = localStorage.getItem("token");
-
+        
         // Fetch user links from the backend
         axios.get(`/api/${username}`)
         .then((res) => {
-            console.log(res.data);
+           
           setUserData(res.data);
           setUserLinks(res.data.links);
         
         })
         .catch((err) => {
-            console.log(err)
+            if(err.status === 404){
+                navigate("/user-not-found");
+            }
         });
 
        
