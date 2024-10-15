@@ -8,11 +8,12 @@ import {
 import Login from './pages/Login.jsx';
 import Register from "./pages/Register.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
-import MainTestPage from './pages/MainTestpage.jsx';
+
 import Editor from './pages/Editor.jsx';
 import ProfileDetails from './pages/ProfileDetails.jsx';
 import TestProfilePage from './pages/TestProfilePage.jsx';
 import Preview from './pages/Preview.jsx';
+import SharePage from './pages/SharePage.jsx';
 
 
 const router = createBrowserRouter([
@@ -26,10 +27,6 @@ const router = createBrowserRouter([
     path: "/createAccount",
     element: <Register />
 
-  },
-  {
-      path: "/mainTestPage",
-      element: <MainTestPage />
   },
   {
     path: "/admin",
@@ -47,6 +44,10 @@ const router = createBrowserRouter([
   {
     path: "/preview/:username",
     element: <Preview />
+  },
+  {
+    path: "/:username",
+    element: <SharePage />
   }
 
 ]);

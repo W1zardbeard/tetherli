@@ -575,6 +575,55 @@ app.post("/api/updateUserInfo", authenticateToken, async (req, res) => {
 });
 
 
+// ==============================
+// Endpoint to get user details for public user
+// ==============================
+
+app.get("/api/:username", async (req, res) => {
+  // Extract the username from the request parameters
+  const username = req.params.username;
+  console.log(username);
+  // SQL query to get user details based on the username
+  const query = `
+  SELECT id, first_name, last_name, username, show_name, show_email, avatar
+  FROM users
+  WHERE username = $1
+  `;
+  try {
+    // Execute the query with the provided username
+    const userDetails = await db.query(query, [username]);
+    // If no user details are found, send a response indicating so
+    if (userDetails.rows.length === 0) {
+      return res.status(404).send("No user found");
+    }
+      try{
+        // Query the database to get links associated with the user ID
+        const getLinks = await db.query("SELECT * FROM links WHERE user_id = $1", [
+          userDetails.rows[0].id,
+        ]);
+    
+        // If no links are found, send an empty array
+        if (getLinks.rows.length === 0) {
+          return res.send([]);
+        }
+        // Send the retrieved links as the response
+        userDetails.rows[0].links = getLinks.rows;
+      }catch(err){
+        // Log any error that occurs during the database query
+        console.log(err);
+        // Send a 500 Internal Server Error status if an error occurs
+        res.status(500).send("Server error");
+      }
+    // Send the retrieved user details as the response
+    res.json(userDetails.rows[0]);
+  } catch (err) {
+    // Log any error that occurs during the database query
+    console.error("Error fetching user details: ", err);
+    // Send a 500 Internal Server Error status if an error occurs
+    res.status(500).send("Server error");
+  }
+});
+
 
 
 
