@@ -97,16 +97,16 @@ export default function LinkCard(props){
         break;
     }
     
-
+console.log(props)
 
     return(
-        <div className="linkCard " style={linkStyle}>
+        <a href={props.link} className="linkCard " style={linkStyle}>
             <div className="nameAndIcon">
                 <img src={"../src/assets/" + iconSrc} />
                 <p>{name}</p>
             </div>
             <img src="../src/assets/icon-arrow-right.svg"/>
 
-        </div>
+        </a>
     )
 }
