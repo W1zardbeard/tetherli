@@ -585,29 +585,34 @@ app.get("/api/:username", async (req, res) => {
   console.log(username);
   // SQL query to get user details based on the username
   const query = `
-  SELECT id, first_name, last_name, username, show_name, show_email, avatar
+  SELECT id, email, first_name, last_name, username, show_name, show_email, avatar
   FROM users
   WHERE username = $1
   `;
   try {
     // Execute the query with the provided username
     const userDetails = await db.query(query, [username]);
+   
     // If no user details are found, send a response indicating so
     if (userDetails.rows.length === 0) {
+      
       return res.status(404).send("No user found");
+      
     }
+   
       try{
         // Query the database to get links associated with the user ID
         const getLinks = await db.query("SELECT * FROM links WHERE user_id = $1", [
           userDetails.rows[0].id,
         ]);
-    
+      
         // If no links are found, send an empty array
         if (getLinks.rows.length === 0) {
-          return res.send([]);
+          return res.send(userDetails.rows[0]);
         }
         // Send the retrieved links as the response
         userDetails.rows[0].links = getLinks.rows;
+        
       }catch(err){
         // Log any error that occurs during the database query
         console.log(err);

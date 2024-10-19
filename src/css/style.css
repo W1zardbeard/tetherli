@@ -421,18 +421,17 @@ button img {
   padding-right: 120px;
   padding-top: 64px;
   padding-bottom: 64px;
-  gap: 40px;
-}
-.emptyEdit div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 24px;
 }
-.emptyEdit div p {
+.emptyEdit h1 {
+  color: #633CFF;
+}
+.emptyEdit p {
   color: #737373;
   text-align: center;
+}
+.emptyEdit .emptyEditIllustration {
+  width: 50%;
 }
 
 .userProfile {
@@ -523,6 +522,28 @@ button img {
 .emptyEmail {
   height: 8px;
   width: 72px;
+}
+
+.sharePageEmptyText {
+  text-align: center;
+  width: 100%;
+  color: #737373;
+}
+
+.noUserCont {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.noUserImg {
+  width: 25%;
+}
+
+.noUserTex {
+  text-align: center;
 }
 
 .linkList {

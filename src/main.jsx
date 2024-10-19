@@ -14,6 +14,7 @@ import ProfileDetails from './pages/ProfileDetails.jsx';
 import TestProfilePage from './pages/TestProfilePage.jsx';
 import Preview from './pages/Preview.jsx';
 import SharePage from './pages/SharePage.jsx';
+import UserNotFound from './pages/UserNotFound.jsx';
 
 
 
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/:username",
     element: <SharePage />
+  },
+  {
+    path: "/user-not-found",
+    element: <UserNotFound />
   }
 
 ]);

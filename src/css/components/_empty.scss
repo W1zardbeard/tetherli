@@ -19,3 +19,25 @@
 .emptyLinkCard{
     
 }
+
+.sharePageEmptyText{
+    text-align: center;
+    width:100%;
+    color:$grey;
+}
+
+.noUserCont{
+    display: flex;
+    gap:$s4;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.noUserImg{
+    width:25%;
+}
+
+.noUserTex{
+    text-align: center;
+}

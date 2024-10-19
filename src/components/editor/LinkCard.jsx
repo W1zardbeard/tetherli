@@ -97,7 +97,7 @@ export default function LinkCard(props){
         break;
     }
     
-console.log(props)
+
 
     return(
         <a href={props.link} className="linkCard " style={linkStyle}>
