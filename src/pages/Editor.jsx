@@ -9,10 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import axios from "axios";
 
-
-
-
-
 export default function Editor(){
 
     const [userData, setUserData] = useState({});
@@ -35,9 +31,6 @@ export default function Editor(){
             setUserLinks(userLinks => [...userLinks, {link_id: linkIdGen , type: "github"}]);
         }
     }
-
-
-
 
     // ============================
     // 1. Token verification
@@ -102,13 +95,6 @@ export default function Editor(){
         });
     }, [navigate]);
 
-
-
-
-
-
-
-
     // ============================
     // Function to set the type of a link
     // ============================
@@ -130,7 +116,6 @@ export default function Editor(){
         // Update the state with the new array
         setUserLinks(newArray);
     }
-
 
     // ============================
     // Function to update the URL of a link
@@ -155,8 +140,6 @@ export default function Editor(){
         setUserLinks(newArray);
     }
 
-
-
     // ============================
     // Function to save links to the backend
     // ============================
@@ -164,6 +147,21 @@ export default function Editor(){
         // Retrieve the token from local storage
         const token = localStorage.getItem("token");
 
+        // Check if links begin with http, https, or www.
+        for (let i = 0; i < userLinks.length; i++) {
+            const link = userLinks[i].link;
+
+            if (link.startsWith("http://") || link.startsWith("https://")) {
+                console.log("good to go");
+            } else if (link.startsWith("www.")) {
+                
+                userLinks[i].link = "https://" + link;
+            } else {
+             
+                userLinks[i].link = "https://www." + link;
+            }
+        }
+        
         // Make a POST request to save the userLinks
         axios.post("/api/saveLinks", {userLinks}, {
             headers: {Authorization: `Bearer ${token}`}
@@ -171,11 +169,12 @@ export default function Editor(){
         .then((res) => {
             // Handle the response here
             // If the response status is 200, show a success message
- 
+            
             toast.success("Link(s) saved successfully", {
                 autoClose: 2000,
                 position: "top-center",
             });
+        
         })
         .catch((err) => {
             // Handle any errors here
@@ -186,8 +185,6 @@ export default function Editor(){
             });
         });
     }
-
-   
 
     // ============================
     // Function to remove a link from the userLinks array using link_id
@@ -223,10 +220,9 @@ export default function Editor(){
         });
     }
    
-
-// ============================
-// Return part of the component
-// ============================
+    // ============================
+    // Return part of the component
+    // ============================
     return(
         <div className="editor">
             <Navbar 
