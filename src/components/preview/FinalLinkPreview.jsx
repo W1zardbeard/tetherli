@@ -4,6 +4,8 @@ import LinkListMockup from "../editor/LinkListMockup"
 
 
 export default function FinalLinkPreview(props) {
+
+
     return (
         <div className="finalPreview">
                 <UserProfile 
@@ -12,7 +14,8 @@ export default function FinalLinkPreview(props) {
                 />
                 <LinkListMockup 
                     links = {props.links}
-                  
+                    sharePage = {true}
+                
                 />
 
                

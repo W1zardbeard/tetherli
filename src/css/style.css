@@ -524,6 +524,28 @@ button img {
   width: 72px;
 }
 
+.sharePageEmptyText {
+  text-align: center;
+  width: 100%;
+  color: #737373;
+}
+
+.noUserCont {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  flex-direction: column;
+  height: 100%;
+}
+
+.noUserImg {
+  width: 25%;
+}
+
+.noUserTex {
+  text-align: center;
+}
+
 .linkList {
   width: 100%;
   height: 100%;

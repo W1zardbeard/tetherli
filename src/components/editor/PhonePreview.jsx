@@ -13,6 +13,7 @@ export default function PhonePreview(props){
                 />
                 <LinkListMockup 
                     links = {props.links}
+                    sharePage = {false}
                 />
             </div>
         </div>

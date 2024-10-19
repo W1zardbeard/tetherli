@@ -39,14 +39,16 @@ export default function SharePage(){
        
     }, []);
 
+
     
     return(
+       
         <div className='editor previewPage'>
             <ShareNav />
             <FinalLinkPreview 
-            userDetails={userData}
-            links={userLinks}
-        />
+                userDetails={userData}
+                links={userLinks}
+            />
             
 
             <NavCard />
