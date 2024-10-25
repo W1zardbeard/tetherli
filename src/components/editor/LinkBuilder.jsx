@@ -43,20 +43,14 @@ export default function LinkBuilder(props){
         <div className="linkBuilder">
             <div className="linkHeader">
                 <div className="linkTitle">
-                   
                     <p>Link #{props.numInList}</p>
                 </div>
-
-
-
-                <p 
-                className="remove"
-                onClick={() => props.removeLink(props.id)}
-                >
-                    Remove
-                </p>
-
-                
+                    <p 
+                        className="remove"
+                        onClick={() => props.removeLink(props.id)}
+                    >
+                        Remove
+                    </p>
             </div>
 
 
@@ -77,14 +71,7 @@ export default function LinkBuilder(props){
                         placeholder="e.g. https://www.github.com/johnappleseed"
                         value={link}
                     />
-            </div>
-            
-            
-        
-
-
-        
-           
+            </div>  
         </div>
     )
 }

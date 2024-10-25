@@ -157,7 +157,6 @@ export default function Editor(){
                 
                 userLinks[i].link = "https://" + link;
             } else {
-             
                 userLinks[i].link = "https://www." + link;
             }
         }
