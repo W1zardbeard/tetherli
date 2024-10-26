@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Dropdown from "./Dropdown";
 
 export default function LinkBuilder(props){
 
     const [link , setLink] = useState(props.url ? props.url : "")
+    const isInitialRender = useRef(true);
 
     function handleChange(event){
         const{name, value} = event.target;
@@ -12,6 +13,12 @@ export default function LinkBuilder(props){
     }
 
     useEffect(() => {
+
+        if (isInitialRender.current) {
+            isInitialRender.current = false;
+            return;
+        }
+
         const typingTimer = setTimeout(() => {
             console.log("checking link");
             if((link.startsWith("http://") || link.startsWith("https://"))){
