@@ -6,8 +6,13 @@ import ShareNav from '../components/sharePage/shareNav';
 import FinalLinkPreview from '../components/preview/FinalLinkPreview';
 import { useNavigate } from "react-router-dom";
 import NavCard from '../components/preview/NavCard';
+import MoonLoader from "react-spinners/MoonLoader";
 
 export default function SharePage(){
+
+
+    // Loading state
+    const [loading, setLoading] = useState(true);
 
     // Get the username from the URL
     const url = window.location.href;
@@ -28,6 +33,8 @@ export default function SharePage(){
            
           setUserData(res.data);
           setUserLinks(res.data.links);
+          
+          setLoading(false);
         
         })
         .catch((err) => {
@@ -45,10 +52,22 @@ export default function SharePage(){
        
         <div className='editor previewPage'>
             <ShareNav />
-            <FinalLinkPreview 
-                userDetails={userData}
-                links={userLinks}
-            />
+
+            {/* Display the loading spinner */}
+            {loading ? 
+                <MoonLoader 
+                    color={"#633CFF"} 
+                    loading={loading} 
+                    size={40} 
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                /> 
+            : 
+                <FinalLinkPreview 
+                    userDetails={userData}
+                    links={userLinks}
+                />
+            }
             
 
             <NavCard />

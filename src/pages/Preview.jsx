@@ -7,11 +7,15 @@ import FinalLinkPreview from '../components/preview/FinalLinkPreview';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import NavCard from "../components/preview/NavCard"
+import NavCard from "../components/preview/NavCard";
+import MoonLoader from "react-spinners/MoonLoader";
 
 
 
 export default function Preview() {
+
+    // Loading state
+    const [loading, setLoading] = useState(true);
 
     //user data
     const [userData, setUserData] = useState({});
@@ -88,6 +92,8 @@ export default function Preview() {
                 position: "top-center",
             });
         });
+
+        setLoading(false);
     }, []);
 
 
@@ -115,17 +121,32 @@ export default function Preview() {
   return (
     <div className='editor previewPage'>
         <PreviewNav />
-        <FinalLinkPreview 
-            userDetails={userData}
-            links={userLinks}
-        />
 
-        <NavCard 
-            username={username}
-            clickHandler={copyToClipboard}
-            copyLink={true}
+        {loading ? 
+
+        <MoonLoader 
+        color={"#633CFF"} 
+        loading={loading} 
+        size={40} 
+        aria-label="Loading Spinner"
+        data-testid="loader"
         />
-        <ToastContainer />
+        :
+            <>        
+            <FinalLinkPreview 
+                userDetails={userData}
+                links={userLinks}
+            />
+
+            <NavCard 
+                username={username}
+                clickHandler={copyToClipboard}
+                copyLink={true}
+            />
+            <ToastContainer />
+        </>
+
+    }
     </div>
   );
 }
