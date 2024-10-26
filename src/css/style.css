@@ -312,6 +312,10 @@ button img {
 .navbar a {
   display: flex;
 }
+.navbar .rightCTAs {
+  display: flex;
+  gap: 16px;
+}
 .navbar .navLinksCont {
   display: flex;
   gap: 16px;
