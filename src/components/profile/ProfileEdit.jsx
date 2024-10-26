@@ -3,6 +3,7 @@ import AvatarEdit from "./AvatarEdit"
 import DetailsEdit from "./DetailsEdit"
 import SaveEditBar from "../editor/SaveEditBar"
 import { useState, useEffect } from "react"
+import MoonLoader from "react-spinners/MoonLoader";
 
 
 
@@ -17,7 +18,19 @@ export default function ProfileEdit(props){
                 title="Profile Details"
                 subText="Add your details to create a personal touch to your profile."
             />
+            {props.loading ?
 
+            <div className="loaderContainer">
+            <MoonLoader 
+                color={"#633CFF"} 
+                loading={props.loading} 
+                size={40} 
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
+            </div>  
+            :
+                <>
             <AvatarEdit 
                 avatar={props.userDetails.avatar}
                 updateAvatar={props.updateAvatar}
@@ -29,6 +42,8 @@ export default function ProfileEdit(props){
                 updateShowName={props.updateShowName}
                 updateShowEmail={props.updateShowEmail}
             />
+            </>
+            }
 
 
 

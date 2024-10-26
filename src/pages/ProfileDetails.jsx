@@ -11,6 +11,9 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProfileDetails(){
 
+     // Loading state
+     const [loading, setLoading] = useState(true);
+
     
     // State to store user data
     const [userData, setUserData] = useState({});
@@ -91,7 +94,7 @@ export default function ProfileDetails(){
                     position: "top-center",
                 });
             });
-
+            setLoading(false);
         })
         .catch((err) => {
             // Log any errors and navigate to the login page
@@ -207,11 +210,13 @@ function saveDetails(){
             />
              <div className="mainAreaWrapper">
                 <PhonePreview 
+                    loading={loading}
                     userDetails={userData}
                     links={userLinks}
                 />
 
                 <ProfileEdit 
+                    loading={loading}
                     userDetails={userData}
                     updateAvatar={updateAvatar}
                     saveDetails={saveDetails}

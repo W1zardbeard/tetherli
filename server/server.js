@@ -420,7 +420,7 @@ app.post("/api/saveLinks", authenticateToken, async (req, res) => {
   try {
     // Delete existing links for the user from the database
     await db.query("DELETE FROM links WHERE user_id = $1", [userId]);
-    
+   
     // Upsert the new links into the database
     upsertLinks(userId, savedLinks);
     

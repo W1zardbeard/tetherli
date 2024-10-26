@@ -16,6 +16,9 @@ export default function Editor(){
     const[forceUpdate, setForceUpdate] = useState(0);
     const navigate = useNavigate();
 
+     // Loading state
+     const [loading, setLoading] = useState(true);
+
     // ============================
     // Function to add a new link
     // ============================
@@ -88,6 +91,7 @@ export default function Editor(){
                     position: "top-center",
                 });
             });
+            setLoading(false);
         })
         .catch((err) => {
             // Log any errors and navigate to the login page
@@ -230,11 +234,13 @@ export default function Editor(){
             />
             <div className="mainAreaWrapper">
                 <PhonePreview 
+                    loading={loading}
                     userDetails={userData}
                     links={userLinks}
                 />
  
                 <EditArea 
+                    loading={loading}
                     links={userLinks}
                     addNewLink={addNewLink}
                     setNewLink={setNewLink}
