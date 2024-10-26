@@ -28,6 +28,12 @@ export default function Navbar(props){
         
 
     }
+
+    function logout(){
+        //navigate to login page
+        localStorage.removeItem("token");
+        navigate("/");
+    }
    
     //create preview page based on user username
     function previewOpen(){
@@ -65,13 +71,22 @@ export default function Navbar(props){
                     linkTo={"admin/profileDetails"}
                 />
             </div>
-            <CTA
-                text={"Preview"}
-                style={"secondary"}
-                icon={true}
-                clickHandler={previewOpen}
-                
-            />
+
+            <div className="rightCTAs">
+                <CTA 
+                    text={"Logout"}
+                    style={"secondary"}
+                    icon={false}
+                    clickHandler={logout}
+                />
+                <CTA
+                    text={"Preview"}
+                    style={"primary"}
+                    icon={true}
+                    clickHandler={previewOpen}
+                    
+                />
+            </div>
       
         </div>
     )
